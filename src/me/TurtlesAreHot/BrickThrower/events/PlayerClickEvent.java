@@ -34,9 +34,8 @@ public class PlayerClickEvent implements Listener {
 			brick.setItemMeta(brick_im);
 			// Gets the location of the brick and then sets its velocity and pickupdelay to make the item launch, and make it so you cannot pick it up.
 			Location brick_loc = p.getEyeLocation();
-			brick_loc.setY(brick_loc.getY() - 1);
-			Item brock = p.getWorld().
-			dropItemNaturally(brick_loc, brick);
+			brick_loc.setY(brick_loc.getY());
+			Item brock = p.getWorld().dropItem(brick_loc, brick);
 			brock.setVelocity(brick_loc.getDirection());
 			brock.setPickupDelay(Short.MAX_VALUE);
 			// Removes one of the bricks from the players inventory.
