@@ -1,6 +1,6 @@
 package me.TurtlesAreHot.BrickThrower.commands;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -44,6 +44,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 						ItemStack heavyBrick = new ItemStack(Material.BRICK, JavaPlugin.getPlugin(Main.class).getConfig().getInt("bricks-given"));
 						ItemMeta im = heavyBrick.getItemMeta(); 
 						im.setDisplayName("Heavy Brick");
+						im.setLore(Arrays.asList(getInvisString("no_craft")));
 						heavyBrick.setItemMeta(im);
 						player.getInventory().addItem(heavyBrick);
 					}
@@ -76,5 +77,14 @@ public class BrickThrowerCommand implements CommandExecutor {
 			}
 		}
 		return false;
+	}
+	
+	
+	public static String getInvisString(String normal) {
+		String hidden = "";
+		for (char c : normal.toCharArray()) {
+			hidden += ChatColor.COLOR_CHAR + "" + c;
+		}
+		return hidden;
 	}
 }
