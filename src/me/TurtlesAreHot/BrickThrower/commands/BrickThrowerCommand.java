@@ -1,7 +1,6 @@
 package me.TurtlesAreHot.BrickThrower.commands;
 
-import java.util.Arrays;
-
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-
+import me.TurtlesAreHot.BrickThrower.GeneralMethods;
 import me.TurtlesAreHot.BrickThrower.Main;
 import net.md_5.bungee.api.ChatColor;
 
@@ -42,11 +41,28 @@ public class BrickThrowerCommand implements CommandExecutor {
 					if (hasPermissionMessage(player, "brickthrower.get")) {
 						// Create an itemstack of bricks, giving it the name of "Heavy Brick" then giving it to the player.
 						ItemStack heavyBrick = new ItemStack(Material.BRICK, JavaPlugin.getPlugin(Main.class).getConfig().getInt("bricks-given"));
+						if (args.length > 1) {
+							if (args[1].equalsIgnoreCase("nether")) {
+								if(hasPermissionMessage(player, "brickthrower.nether")) {
+									heavyBrick.setType(Material.NETHER_BRICK);
+								}
+								else {
+									return false;
+								}
+							}
+						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
 						im.setDisplayName("Heavy Brick");
-						im.setLore(Arrays.asList(getInvisString("no_craft")));
-						heavyBrick.setItemMeta(im);
-						player.getInventory().addItem(heavyBrick);
+ 						heavyBrick.setItemMeta(im);
+ 						String server_ver = Bukkit.getVersion();
+ 						String version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
+ 						if (version.equalsIgnoreCase("1.13")) {
+ 							heavyBrick = GeneralMethods.setNBTTag13(heavyBrick, "brickthrower_item", "true");
+ 						}
+ 						else {
+ 							heavyBrick = GeneralMethods.setNBTTag(heavyBrick, "brickthrower_item", "true");
+ 						}
+ 						player.getInventory().addItem(heavyBrick);
 					}
 					return true;
 				}
@@ -77,14 +93,5 @@ public class BrickThrowerCommand implements CommandExecutor {
 			}
 		}
 		return false;
-	}
-	
-	
-	public static String getInvisString(String normal) {
-		String hidden = "";
-		for (char c : normal.toCharArray()) {
-			hidden += ChatColor.COLOR_CHAR + "" + c;
-		}
-		return hidden;
 	}
 }
