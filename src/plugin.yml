@@ -1,6 +1,6 @@
 main: me.TurtlesAreHot.BrickThrower.Main
 name: BrickThrower
-version: 1.2.1
+version: 1.2.2
 description: This plugin was created as a way to throw bricks!
 author: TurtlesAreHot
 api-version: 1.13
@@ -14,6 +14,9 @@ permissions:
   brickthrower.get:
     description: Allows you to get bricks that you can throw.
     default: op
+  brickthrower.nether:
+    description: Allows you to add the "nether" parameter to the get command to get nether bricks instead.
+    default: op
   brickthrower.reload:
     description: Reloads plugin config data.
     default: op
@@ -24,4 +27,5 @@ permissions:
       brickthrower.info: true
       brickthrower.get: true
       brickthrower.reload: true
+      brickthrower.nether: true
   
