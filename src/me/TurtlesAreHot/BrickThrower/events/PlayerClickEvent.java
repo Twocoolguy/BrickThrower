@@ -2,7 +2,6 @@ package me.TurtlesAreHot.BrickThrower.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.TurtlesAreHot.BrickThrower.GeneralMethods;
 import me.TurtlesAreHot.BrickThrower.Main;
 
 public class PlayerClickEvent implements Listener {
@@ -25,10 +25,18 @@ public class PlayerClickEvent implements Listener {
 		}
 		// Getting item in mainhand, this gets exactly what it is with the names.
 		ItemStack held = p.getInventory().getItemInMainHand();
-		ItemMeta held_im = held.getItemMeta();
-		if(held.getType() == Material.BRICK && held_im.getDisplayName().equals("Heavy Brick")) {
+		String info = null;
+		String server_ver = Bukkit.getVersion();
+		String version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
+		if (version.equalsIgnoreCase("1.13")) {
+			info = GeneralMethods.getNBTDataString13(held, "brickthrower_item");
+		}
+		else {
+			info = GeneralMethods.getNBTDataString(held, "brickthrower_item");
+		}
+		if(info != null) {
 			// Creates a itemstack of bricks with just one ands sets up all information about the brick.
-			ItemStack brick = new ItemStack(Material.BRICK, 1);
+			ItemStack brick = new ItemStack(held.getType(), 1);
 			ItemMeta brick_im = brick.getItemMeta();
 			brick_im.setDisplayName("Heavy Brick");
 			brick.setItemMeta(brick_im);
