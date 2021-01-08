@@ -1,4 +1,4 @@
-# BrickThrower v1.2.1 Source
+# BrickThrower v1.2.2 Source
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. 
 
@@ -8,10 +8,6 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 
 ## Planned Updates 
 
-### 1.2.2:
-- Add ability to also have netherbricks 
-- Use NBT tags to store no_craft data instead of lore.
-
 ### 1.2.3:
 - Add ability to change what the item is
 - Add ability to change the name of the item.
@@ -19,3 +15,10 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 ### Unknown Version:
 - More config!
 - Add damage to players when it is thrown at them.
+
+
+## Finished Updates
+
+### 1.2.2:
+- Add ability to also have netherbricks 
+- Use NBT tags to store no_craft data instead of lore.
