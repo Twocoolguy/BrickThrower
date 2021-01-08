@@ -13,6 +13,7 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 - Add ability to change the name of the item.
 
 ### Unknown Version:
+- Add support for more versions.
 - More config!
 - Add damage to players when it is thrown at them.
 
