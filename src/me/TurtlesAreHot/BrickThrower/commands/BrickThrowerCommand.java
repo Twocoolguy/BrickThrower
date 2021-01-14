@@ -52,7 +52,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 							}
 						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
-						im.setDisplayName("Heavy Brick");
+						im.setDisplayName(JavaPlugin.getPlugin(Main.class).getConfig().getString("item-name"));
  						heavyBrick.setItemMeta(im);
  						String server_ver = Bukkit.getVersion();
  						String version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
