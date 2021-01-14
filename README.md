@@ -15,9 +15,12 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 - New Alias for command, brth instead of brickthrower
 - Performance Improvements
 
-### Unknown Version:
-- Add support for more versions.
-- More config!
+### 1.2.4:
+- Refactoring Code
+- More config
+- Adding Support for more versions
+
+### 1.3.0:
 - Add damage to players when it is thrown at them.
 
 
