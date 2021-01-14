@@ -36,4 +36,5 @@ permissions:
       brickthrower.get: true
       brickthrower.reload: true
       brickthrower.getother: true
+      brickthrower.checkconfig: true
   
