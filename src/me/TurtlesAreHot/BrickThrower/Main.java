@@ -15,6 +15,7 @@ public class Main extends JavaPlugin {
 		this.saveDefaultConfig(); // Creates config.yml
 		this.getConfig().addDefault("bricks-given", 10);
 		this.getConfig().addDefault("reload-enabled", true);
+		this.getConfig().addDefault("item-name", "Heavy Brick");
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
 		this.getServer().getPluginManager().registerEvents(new PlayerClickEvent(),  this); // Adding event listener for any listener in the Main class.
