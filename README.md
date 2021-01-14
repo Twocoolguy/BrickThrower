@@ -9,8 +9,11 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 ## Planned Updates 
 
 ### 1.2.3:
-- Add ability to change what the item is
+- Add ability to change what the item is.
+- Add ability to have a list of items you can use.
 - Add ability to change the name of the item.
+- New Alias for command, brth instead of brickthrower
+- Performance Improvements
 
 ### Unknown Version:
 - Add support for more versions.
