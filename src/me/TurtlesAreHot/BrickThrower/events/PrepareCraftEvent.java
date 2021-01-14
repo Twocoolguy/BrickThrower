@@ -15,14 +15,13 @@ import me.TurtlesAreHot.BrickThrower.GeneralMethods;
 public class PrepareCraftEvent implements Listener {
 	@EventHandler
 	public void onCraft(PrepareItemCraftEvent e) {
-		String server_ver = Bukkit.getVersion();
-		String version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9); // gets the version without the end number.
-		//For some unknown reason to me, on 1.16 the lore gets set to "on_ft" instead... I really cannot figure it out. Any ideas please reply!
 		for (HumanEntity entity : e.getViewers()) {
 			if (entity instanceof Player) {
 				CraftingInventory g = e.getInventory();
 				for (ItemStack item : g.getContents()) {
 					String info = null;
+					String server_ver = Bukkit.getVersion();
+					String version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
 					if (version.equalsIgnoreCase("1.13")) {
 						info = GeneralMethods.getNBTDataString13(item, "brickthrower_item");
 					}
