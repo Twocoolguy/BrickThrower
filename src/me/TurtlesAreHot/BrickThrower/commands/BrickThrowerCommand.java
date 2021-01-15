@@ -56,8 +56,8 @@ public class BrickThrowerCommand implements CommandExecutor {
 							if(hasPermissionMessage(player, "brickthrower.getother")) {
 								List<String> items = Config.getMaterialList();
 								String param = args[1];
-								if(items.contains(param)) {
-									Material fixed_item = Material.getMaterial(param);
+								if(items.contains(param.toUpperCase())) {
+									Material fixed_item = Material.getMaterial(param.toUpperCase());
 									if(fixed_item == null) {
 										player.sendMessage(ChatColor.GOLD + "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
 										return false;
@@ -73,9 +73,9 @@ public class BrickThrowerCommand implements CommandExecutor {
 							}
 							else { return false; }
 						}
-						if(heavyBrick.getType().isBlock()) {
+						if(heavyBrick.getType().isBlock() || heavyBrick.getType().isEdible()) {
 							// Checks if the item is placeable.
-							player.sendMessage(ChatColor.GOLD + "The item that is trying to be used is placeable. You cannot throw placeable items.");
+							player.sendMessage(ChatColor.GOLD + "The item that is trying to be used is placeable. You cannot throw placeable/edible items.");
 							return false;
 						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
@@ -129,8 +129,8 @@ public class BrickThrowerCommand implements CommandExecutor {
 							errors.add(ChatColor.GOLD + "The default-item material is an invalid material.");
 						}
 						else {
-							if(default_material.isBlock()) {
-								errors.add(ChatColor.GOLD + "The default-item material " + ChatColor.RED + default_material.toString() + ChatColor.GOLD + " is an invalid material because it can be placed.");
+							if(default_material.isBlock() || default_material.isEdible()) {
+								errors.add(ChatColor.GOLD + "The default-item material " + ChatColor.RED + default_material.toString() + ChatColor.GOLD + " is an invalid material because it can be placed or is edible.");
 							}
 						}
 						for (String mat : materials) {
@@ -139,8 +139,8 @@ public class BrickThrowerCommand implements CommandExecutor {
 								errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material.");
 							}
 							else {
-								if(item_mat.isBlock()) {
-									errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material because it can be placed.");
+								if(item_mat.isBlock() || item_mat.isEdible()) {
+									errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material because it can be placed or is edible.");
 								}
 							}
 						}
