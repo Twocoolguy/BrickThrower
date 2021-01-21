@@ -2,6 +2,7 @@ package me.TurtlesAreHot.BrickThrower;
 
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,9 +10,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Config {
 	
 	private static FileConfiguration config;
+	private static String version;
 	
 	public static void reloadConfig() {
 		config = JavaPlugin.getPlugin(Main.class).getConfig();
+		String server_ver = Bukkit.getVersion();
+		version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
 	}
 	
 	public static Material getDefaultItem() {
@@ -32,5 +36,13 @@ public class Config {
 	
 	public static String getItemName() {
 		return config.getString("item-name");
+	}
+	
+	public static String getServerVersion() {
+		return version;
+	}
+	
+	public static int getDisappearTime() {
+		return config.getInt("item-disappear-time");
 	}
 }
