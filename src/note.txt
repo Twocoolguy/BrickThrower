@@ -1,0 +1,1 @@
+In intelij it woul be src > main > java > then these files and folders.
