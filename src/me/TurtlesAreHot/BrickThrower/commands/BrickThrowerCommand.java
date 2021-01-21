@@ -3,7 +3,8 @@ package me.TurtlesAreHot.BrickThrower.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.Bukkit;
+import me.TurtlesAreHot.BrickThrower.version.NBT12;
+import me.TurtlesAreHot.BrickThrower.version.NBT14;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,38 +29,42 @@ public class BrickThrowerCommand implements CommandExecutor {
 			perm = true;
 		}
 		if (perm == false) {
-			player.sendMessage(ChatColor.GOLD + "You must have the permission node: " + ChatColor.RED + permission + ChatColor.GOLD + " to perform this command. Contact an administrator to get this fixed!");
+			msgPlayer(player, "You must have the permission node: " + ChatColor.RED + permission + ChatColor.GOLD + " to perform this command. Contact an administrator to get this fixed!");
 		}
 		return perm;
+	}
+	
+	public void msgPlayer(Player p, String message) {
+		p.sendMessage(ChatColor.GOLD + "[BrickThrower] " + message);
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			// Checks if the sender is not a player because only in-game players can use this plugin.
-			sender.getServer().getLogger().info(ChatColor.DARK_RED + "You cannot use this plugin in console!");
+			sender.getServer().getLogger().info("You cannot use this plugin in console!");
 			return false;
 		}
-		Player player = (Player) sender;
+		Player p = (Player) sender;
 		if (label.equalsIgnoreCase("brickthrower") || label.equalsIgnoreCase("brth")) {
 			if (args.length > 0) {
 				if (args[0].equalsIgnoreCase("get")) {
-					if (hasPermissionMessage(player, "brickthrower.get")) {
+					if (hasPermissionMessage(p, "brickthrower.get")) {
 						// Create an itemstack of bricks, giving it the name of "Heavy Brick" then giving it to the player.
 						Material default_item = Config.getDefaultItem();
 						if(default_item == null) {
-							player.sendMessage(ChatColor.GOLD + "BrickThrower has encountered an error: " + ChatColor.RED + "The config option for 'default-item' is set to an invalid item. Please change it to a valid item. The item type will be set to bricks because of this.");
+							msgPlayer(p, "BrickThrower has encountered an error: " + ChatColor.RED + "The config option for 'default-item' is set to an invalid item. Please change it to a valid item. The item type will be set to bricks because of this.");
 							default_item = Material.BRICK;
 						}
 						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
 						
 						if (args.length > 1) {
-							if(hasPermissionMessage(player, "brickthrower.getother")) {
+							if(hasPermissionMessage(p, "brickthrower.getother")) {
 								List<String> items = Config.getMaterialList();
 								String param = args[1];
 								if(items.contains(param.toUpperCase())) {
 									Material fixed_item = Material.getMaterial(param.toUpperCase());
 									if(fixed_item == null) {
-										player.sendMessage(ChatColor.GOLD + "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
+										msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
 										return false;
 									}
 									else {
@@ -67,52 +72,54 @@ public class BrickThrowerCommand implements CommandExecutor {
 									}
 								}
 								else {
-									player.sendMessage(ChatColor.GOLD + "This is not a valid item listed. Please choose a valid one.");
+									msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
 									return false;
 								}
 							}
 							else { return false; }
 						}
 						if(heavyBrick.getType().isBlock() || heavyBrick.getType().isEdible()) {
-							// Checks if the item is placeable.
-							player.sendMessage(ChatColor.GOLD + "The item that is trying to be used is placeable. You cannot throw placeable/edible items.");
+							// Checks if the item is placeable/edible.
+							msgPlayer(p, "The item that is trying to be used is placeable. You cannot throw placeable/edible items.");
 							return false;
 						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
 						im.setDisplayName(Config.getItemName());
  						heavyBrick.setItemMeta(im);
- 						String server_ver = Bukkit.getVersion();
- 						String version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
+ 						String version = Config.getServerVersion();
  						if (version.equalsIgnoreCase("1.13")) {
  							heavyBrick = GeneralMethods.setNBTTag13(heavyBrick, "brickthrower_item", "true");
  						}
+ 						else if(version.equalsIgnoreCase("1.14") || version.equalsIgnoreCase("1.15") || version.equalsIgnoreCase("1.16")) {
+							heavyBrick = NBT14.setNBTData(heavyBrick, "brickthrower_item", "true");
+						}
  						else {
- 							heavyBrick = GeneralMethods.setNBTTag(heavyBrick, "brickthrower_item", "true");
+ 							heavyBrick = NBT12.setNBTData(heavyBrick, "brickthrower_item", "true");
  						}
- 						player.getInventory().addItem(heavyBrick);
+ 						p.getInventory().addItem(heavyBrick);
 					}
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("reload")) {
-					if (hasPermissionMessage(player, "brickthrower.reload")) {
+					if (hasPermissionMessage(p, "brickthrower.reload")) {
 						if(Config.isReloadEnabled()) {
 							// Reloads the config data.
-							player.sendMessage(ChatColor.GOLD + "BrickThrower has been reloaded!");
+							msgPlayer(p, "BrickThrower has been reloaded!");
 							JavaPlugin.getPlugin(Main.class).reloadConfig();
 							Config.reloadConfig();
 						}
 						else {
-							player.sendMessage(ChatColor.GOLD + "Reloading was disabled in the config. A server restart is required to change the config.");
+							msgPlayer(p, "Reloading was disabled in the config. A server restart is required to change the config.");
 						}
 					}
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("list")) {
-					if (hasPermissionMessage(player, "brickthrower.list")) {
+					if (hasPermissionMessage(p, "brickthrower.list")) {
 						List<String> materials = Config.getMaterialList();
-						player.sendMessage(ChatColor.GOLD + "Valid Materials:");
+						msgPlayer(p, "Valid Materials:");
 						for (String mat : materials) {
-							player.sendMessage(ChatColor.RED + mat);
+							p.sendMessage(ChatColor.RED + mat); // This message send remains the same because we don't want to add "[BrickThrower]" every time.
 						}
 					}
 					else {
@@ -121,7 +128,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("checkconfig")) {
-					if (hasPermissionMessage(player, "brickthrower.checkconfig")) {
+					if (hasPermissionMessage(p, "brickthrower.checkconfig")) {
 						List<String> materials = Config.getMaterialList();
 						Material default_material = Config.getDefaultItem();
 						List<String> errors = new ArrayList<String>();
@@ -145,13 +152,13 @@ public class BrickThrowerCommand implements CommandExecutor {
 							}
 						}
 						if(errors.size() > 0) {
-							player.sendMessage(ChatColor.DARK_RED + "Errors:");
+							msgPlayer(p, ChatColor.DARK_RED + "Errors:");
 							for (String err : errors) {
-								player.sendMessage(err);
+								p.sendMessage(err); // Again do not want to add "[BrickThrower] every time.
 							}
 						}
 						else {
-							player.sendMessage(ChatColor.GOLD + "There was no errors!");
+							msgPlayer(p, "There was no errors!");
 						}
 						
 					}
@@ -161,19 +168,20 @@ public class BrickThrowerCommand implements CommandExecutor {
 					return true;
 				}
 			}
-			if (hasPermissionMessage(player, "brickthrower.info")) {
+			if (hasPermissionMessage(p, "brickthrower.info")) {
 				// The following pulls information from the plugin.yml for this plugin.
 				PluginDescriptionFile pdf = JavaPlugin.getPlugin(Main.class).getDescription();
-				player.sendMessage(ChatColor.GOLD + "BrickThrower " + ChatColor.RED + "v" + pdf.getVersion());
-				player.sendMessage(ChatColor.GOLD + "Created By: " + ChatColor.RED + "" + pdf.getAuthors().get(0));
-				player.sendMessage(ChatColor.RED + "" + pdf.getDescription());
-				player.sendMessage(ChatColor.GOLD + "Commands:");
-				player.sendMessage(ChatColor.DARK_RED + "[] <- optional parameter <> <- required parameter");
-				player.sendMessage(ChatColor.RED + "/brickthrower" + ChatColor.GOLD + " - This command displays information about the plugin and what each command does.");
-				player.sendMessage(ChatColor.RED + "/brickthrower get [material]" + ChatColor.GOLD + " - This command gives you bricks that you can throw.");
-				player.sendMessage(ChatColor.RED + "/brickthrower reload" + ChatColor.GOLD + " - This command reloads the config.");
-				player.sendMessage(ChatColor.RED + "/brickthrower list" + ChatColor.GOLD + " - This command lists all of the materials you can use with the /brickthrower get command.");
-				player.sendMessage(ChatColor.RED + "/brickthrower checkconfig" + ChatColor.GOLD + " - This command goes through the items list and default-item in the config and tells you if there are invalid material types.");
+				// All of the messages sent here don't use the function because we don't want "[BrickThrower]" every single time.
+				p.sendMessage(ChatColor.GOLD + "BrickThrower " + ChatColor.RED + "v" + pdf.getVersion());
+				p.sendMessage(ChatColor.GOLD + "Created By: " + ChatColor.RED + "" + pdf.getAuthors().get(0));
+				p.sendMessage(ChatColor.RED + "" + pdf.getDescription());
+				p.sendMessage(ChatColor.GOLD + "Commands:");
+				p.sendMessage(ChatColor.DARK_RED + "[] <- optional parameter <> <- required parameter");
+				p.sendMessage(ChatColor.RED + "/brickthrower" + ChatColor.GOLD + " - This command displays information about the plugin and what each command does.");
+				p.sendMessage(ChatColor.RED + "/brickthrower get [material]" + ChatColor.GOLD + " - This command gives you bricks that you can throw.");
+				p.sendMessage(ChatColor.RED + "/brickthrower reload" + ChatColor.GOLD + " - This command reloads the config.");
+				p.sendMessage(ChatColor.RED + "/brickthrower list" + ChatColor.GOLD + " - This command lists all of the materials you can use with the /brickthrower get command.");
+				p.sendMessage(ChatColor.RED + "/brickthrower checkconfig" + ChatColor.GOLD + " - This command goes through the items list and default-item in the config and tells you if there are invalid material types.");
 			}
 		}
 		return false;
