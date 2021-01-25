@@ -17,6 +17,7 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 - Support for newer versions of Minecraft
 - Bug patches
 - Documentation
+After 1.3.0 there will be a new branch called "wip" This branch will be for any updates/changes I want to make or any pull request changes other people make. This is where all new updates should go. More than likely at some point those updates will be pushed into a release version.
 
 This is not due to me not having interest in the plugin, more that the plugin is complete. There would be nothing else that I would have interest into adding to the plugin as anything more would push away from the point of the plugin. I also want to work on other plugins. This plugin has been a lot of fun to work on. :)
 
