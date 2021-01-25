@@ -3,8 +3,7 @@ package me.TurtlesAreHot.BrickThrower.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.TurtlesAreHot.BrickThrower.version.NBT12;
-import me.TurtlesAreHot.BrickThrower.version.NBT14;
+import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,7 +15,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.TurtlesAreHot.BrickThrower.Config;
-import me.TurtlesAreHot.BrickThrower.GeneralMethods;
 import me.TurtlesAreHot.BrickThrower.Main;
 import net.md_5.bungee.api.ChatColor;
 
@@ -56,29 +54,35 @@ public class BrickThrowerCommand implements CommandExecutor {
 							default_item = Material.BRICK;
 						}
 						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
-						
-						if (args.length > 1) {
-							if(hasPermissionMessage(p, "brickthrower.getother")) {
-								List<String> items = Config.getMaterialList();
-								String param = args[1];
-								if(items.contains(param.toUpperCase())) {
-									Material fixed_item = Material.getMaterial(param.toUpperCase());
-									if(fixed_item == null) {
-										msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
+						if(Config.oldServer()) {
+							heavyBrick.setType(Material.LEGACY_CLAY_BRICK);
+							if(args.length > 1) {
+								msgPlayer(p, "Versions 1.12 and below only support the material clay brick. Sorry.");
+							}
+						}
+						else {
+							if (args.length > 1) {
+								if (hasPermissionMessage(p, "brickthrower.getother")) {
+									List<String> items = Config.getMaterialList();
+									String param = args[1];
+									if (items.contains(param.toUpperCase())) {
+										Material fixed_item = Material.getMaterial(param.toUpperCase());
+										if (fixed_item == null) {
+											msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
+											return false;
+										} else {
+											heavyBrick.setType(fixed_item);
+										}
+									} else {
+										msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
 										return false;
 									}
-									else {
-										heavyBrick.setType(fixed_item);
-									}
-								}
-								else {
-									msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
+								} else {
 									return false;
 								}
 							}
-							else { return false; }
 						}
-						if(heavyBrick.getType().isBlock() || heavyBrick.getType().isEdible()) {
+						if(!(Config.oldServer()) && (heavyBrick.getType().isBlock() || heavyBrick.getType().isEdible())) {
 							// Checks if the item is placeable/edible.
 							msgPlayer(p, "The item that is trying to be used is placeable. You cannot throw placeable/edible items.");
 							return false;
@@ -87,15 +91,22 @@ public class BrickThrowerCommand implements CommandExecutor {
 						im.setDisplayName(Config.getItemName());
  						heavyBrick.setItemMeta(im);
  						String version = Config.getServerVersion();
- 						if (version.equalsIgnoreCase("1.13")) {
- 							heavyBrick = GeneralMethods.setNBTTag13(heavyBrick, "brickthrower_item", "true");
- 						}
- 						else if(version.equalsIgnoreCase("1.14") || version.equalsIgnoreCase("1.15") || version.equalsIgnoreCase("1.16")) {
-							heavyBrick = NBT14.setNBTData(heavyBrick, "brickthrower_item", "true");
+ 						switch(version) {
+							case "1.13":
+								heavyBrick = NBT13.setNBTData(heavyBrick, "brickthrower_item", "true");
+							case "1.12":
+								heavyBrick = NBT12.setNBTData(heavyBrick, "brickthrower_item", "true");
+							case "1.11":
+								heavyBrick = NBT11.setNBTData(heavyBrick, "brickthrower_item", "true");
+							case "1.10":
+								heavyBrick = NBT10.setNBTData(heavyBrick, "brickthrower_item", "true");
+							case "1.9":
+								heavyBrick = NBT9.setNBTData(heavyBrick, "brickthrower_item", "true");
+							case "1.8":
+								heavyBrick = NBT8.setNBTData(heavyBrick, "brickthrower_item", "true");
+							default:
+								heavyBrick = NBT14.setNBTData(heavyBrick, "brickthrower_item", "true");
 						}
- 						else {
- 							heavyBrick = NBT12.setNBTData(heavyBrick, "brickthrower_item", "true");
- 						}
  						p.getInventory().addItem(heavyBrick);
 					}
 					return true;
@@ -115,6 +126,10 @@ public class BrickThrowerCommand implements CommandExecutor {
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("list")) {
+					if(Config.oldServer()) {
+						msgPlayer(p, "There is no extra materials you can choose from on 1.12 and below.");
+						return false;
+					}
 					if (hasPermissionMessage(p, "brickthrower.list")) {
 						List<String> materials = Config.getMaterialList();
 						msgPlayer(p, "Valid Materials:");
@@ -128,6 +143,10 @@ public class BrickThrowerCommand implements CommandExecutor {
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("checkconfig")) {
+					if(Config.oldServer()) {
+						msgPlayer(p, "Any extra items do not work on 1.12 and below, so there is no point in checking if they are valid.");
+						return false;
+					}
 					if (hasPermissionMessage(p, "brickthrower.checkconfig")) {
 						List<String> materials = Config.getMaterialList();
 						Material default_material = Config.getDefaultItem();
