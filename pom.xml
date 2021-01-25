@@ -27,5 +27,47 @@
             <version>1.15.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>lib2</groupId>
+            <artifactId>library2</artifactId>
+            <version>1.13.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.13.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>lib</groupId>
+            <artifactId>library</artifactId>
+            <version>1.12.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.12.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>lib3</groupId>
+            <artifactId>library3</artifactId>
+            <version>1.11.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.11.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>lib4</groupId>
+            <artifactId>library4</artifactId>
+            <version>1.10.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.10.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>lib5</groupId>
+            <artifactId>library5</artifactId>
+            <version>1.9.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.9.4.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>lib6</groupId>
+            <artifactId>library6</artifactId>
+            <version>1.8.9</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.8.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>
