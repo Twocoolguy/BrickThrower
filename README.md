@@ -10,6 +10,7 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 
 ### 1.3.0:
 - Add damage to players when it is thrown at them.
+- Don't allow players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data.
 
 ## Note
 1.3.0 will be the final content update of BrickThrower. Things will not be added after this. Any updates will be for: 
