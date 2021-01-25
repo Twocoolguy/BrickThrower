@@ -14,7 +14,7 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 
 ## Note
 1.3.0 will be the final content update of BrickThrower. Things will not be added after this. Any updates will be for: 
-- Support for newer version of Minecraft
+- Support for newer versions of Minecraft
 - Bug patches
 - Documentation
 
