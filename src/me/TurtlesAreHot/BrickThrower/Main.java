@@ -32,9 +32,13 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new PrepareCraftEvent(), this);
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 		Config.reloadConfig(); // Sets up our configreader object in our Config class.
+		if(Config.oldServer()) {
+			this.getServer().getLogger().warning("This server is on 1.12 or below. You will only be able to throw the brick material because of ID changes in those versions. We do not yet have support for this.");
+		}
 	}
 	
 	@Override
 	public void onDisable() {
+
 	}
 }
