@@ -1,5 +1,6 @@
 package me.TurtlesAreHot.BrickThrower.events;
 
+import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -11,7 +12,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.TurtlesAreHot.BrickThrower.Config;
-import me.TurtlesAreHot.BrickThrower.GeneralMethods;
 import me.TurtlesAreHot.BrickThrower.Main;
 
 public class PlayerClickEvent implements Listener {
@@ -27,11 +27,21 @@ public class PlayerClickEvent implements Listener {
 		ItemStack held = p.getInventory().getItemInMainHand();
 		String info = null;
 		String version = Config.getServerVersion(); // Gives us the server version.
-		if (version.equalsIgnoreCase("1.13")) {
-			info = GeneralMethods.getNBTDataString13(held, "brickthrower_item");
-		}
-		else {
-			info = GeneralMethods.getNBTDataString(held, "brickthrower_item");
+		switch(version) {
+			case "1.13":
+				info = NBT13.getNBTDataString(held, "brickthrower_item");
+			case "1.12":
+				info = NBT12.getNBTDataString(held, "brickthrower_item");
+			case "1.11":
+				info = NBT11.getNBTDataString(held, "brickthrower_item");
+			case "1.10":
+				info = NBT10.getNBTDataString(held, "brickthrower_item");
+			case "1.9":
+				info = NBT9.getNBTDataString(held, "brickthrower_item");
+			case "1.8":
+				info = NBT8.getNBTDataString(held, "brickthrower_item");
+			default:
+				info = NBT14.getNBTDataString(held, "brickthrower_item");
 		}
 		if(info != null) {
 			// Creates a itemstack of bricks with just one ands sets up all information about the brick.
