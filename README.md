@@ -2,6 +2,10 @@
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. 
 
+
+## v1.2.4 Update Note
+In the most recent update (v1.2.4) a lot of code was rewritten to be faster and better than it was originally. We also added support for 5 other versions of Minecraft (1.8, 1.9, 1.10, 1.11, and 1.12). Since so much code was changed to allow compatibility between these versions and the fact that there is new faster code in general, more than likely are a lot of bugs in this update. While I went through and found a lot of them and patched them, that does not mean that you may not have found some yourself. If you find any please report them and explain in detail how to reproduce them and what exactly happens. A gif/video of it happening may also help. If the bug is config related please give us the config. This will help us make the plugin better for everyone. Thank you.
+
 ## Contributing
 This GitHub place is where you can create issues and make pull requests. Feel free to do that, though before making major changes, please create a suggestion in our discord server here: https://discord.gg/TyZM6ePB65 and go into the BrickThrower suggestions channel and make a suggestion there. With enough upvotes we will consider it as an addition.
 
@@ -9,7 +13,7 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 ## Planned Updates 
 
 ### 1.3.0:
-- Add damage to players when it is thrown at them.
+- Add damage to players when bricks are thrown at them.
 - Don't allow players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data.
 
 ## Note
@@ -21,22 +25,28 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 This is not due to me not having interest in the plugin, more that the plugin is complete. There would be nothing else that I would have interest into adding to the plugin as anything more would push away from the point of the plugin. I also want to work on other plugins. This plugin has been a lot of fun to work on. :)
 
 
-After 1.3.0 there will be a new branch called "wip" This branch will be for any updates/changes I want to make or any pull request changes other people make. This is where all new updates should go. More than likely at some point those updates will be pushed into a release version.
+After 1.3.0 there will be a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). 
 
 ## Finished Updates
 
 ### 1.2.2:
-- Add ability to also have netherbricks 
-- Use NBT tags to store no_craft data instead of lore.
+- Added ability to also get nether_bricks instead of normal bricks by typing: /brickthrower get nether 
+- Started using NBT tags to store no_craft data instead of lore.
 
 ### 1.2.3:
-- Add ability to change what the item is.
-- Add ability to have a list of items you can use.
-- Add ability to change the name of the item.
-- New Alias for command, brth instead of brickthrower
+- Added the ability to change what the default item you get from /brickthrower get is (you can change this in the config).
+- Added the ability to have a list of items you can use (you can add and remove items in the config)
+- Added the ability to change the name of the item /brickthrower get gives you (you can change this in the config).
+- Added new alias for the brickthrower command, brth instead of brickthrower
 - Performance Improvements
 
 ### 1.2.4:
-- Refactoring Code
-- More config
-- Adding Support for more versions
+- Refactored the code for performance improvements and readability.
+- Fixed many bugs. One in particular that would delete an item in your offhand when trying to throw bricks.
+- Added a new config option to change how long an item stays appearing for.
+- Added Support for more versions of Minecraft:
+  - 1.12
+  - 1.11
+  - 1.10
+  - 1.9
+  - 1.8
