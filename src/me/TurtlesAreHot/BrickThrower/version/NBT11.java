@@ -1,6 +1,5 @@
 package me.TurtlesAreHot.BrickThrower.version;
 
-import net.minecraft.server.v1_11_R1.Material;
 import net.minecraft.server.v1_11_R1.NBTTagCompound;
 import net.minecraft.server.v1_11_R1.NBTTagString;
 
