@@ -2,10 +2,6 @@
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. 
 
-
-## v1.2.4 Update Note
-In the most recent update (v1.2.4) a lot of code was rewritten to be faster and better than it was originally. We also added support for 5 other versions of Minecraft (1.8, 1.9, 1.10, 1.11, and 1.12). Since so much code was changed to allow compatibility between these versions and the fact that there is new faster code in general, more than likely are a lot of bugs in this update. While I went through and found a lot of them and patched them, that does not mean that you may not have found some yourself. If you find any please report them and explain in detail how to reproduce them and what exactly happens. A gif/video of it happening may also help. If the bug is config related please give us the config. This will help us make the plugin better for everyone. Thank you.
-
 ## Contributing
 This GitHub place is where you can create issues and make pull requests. Feel free to do that, though before making major changes, please create a suggestion in our discord server here: https://discord.gg/TyZM6ePB65 and go into the BrickThrower suggestions channel and make a suggestion there. With enough upvotes we will consider it as an addition.
 
