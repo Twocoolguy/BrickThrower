@@ -72,7 +72,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 						}
 						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
 						if(Config.oldServer()) {
-							heavyBrick.setType(getMaterial("CLAY_BRICK"));
+							heavyBrick.setType(Material.getMaterial("CLAY_BRICK"));
 							if(args.length > 1) {
 								msgPlayer(p, "Versions 1.12 and below only support the material clay brick. Sorry.");
 							}
@@ -98,11 +98,6 @@ public class BrickThrowerCommand implements CommandExecutor {
 									return false;
 								}
 							}
-						}
-						if(!(Config.oldServer()) && (heavyBrick.getType().isBlock() || heavyBrick.getType().isEdible())) {
-							// Checks if the item is placeable/edible.
-							msgPlayer(p, "The item that is trying to be used is placeable. You cannot throw placeable/edible items.");
-							return false;
 						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
 						im.setDisplayName(Config.getItemName());
@@ -149,7 +144,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("list")) {
-					if(Config.oldServer()) {
+					if (Config.oldServer()) {
 						msgPlayer(p, "There is no extra materials you can choose from on 1.12 and below.");
 						return false;
 					}
@@ -159,52 +154,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 						for (String mat : materials) {
 							p.sendMessage(ChatColor.RED + mat); // This message send remains the same because we don't want to add "[BrickThrower]" every time.
 						}
-					}
-					else {
-						return false;
-					}
-					return true;
-				}
-				else if (args[0].equalsIgnoreCase("checkconfig")) {
-					if(Config.oldServer()) {
-						msgPlayer(p, "Any extra items do not work on 1.12 and below, so there is no point in checking if they are valid.");
-						return false;
-					}
-					if (hasPermissionMessage(p, "brickthrower.checkconfig")) {
-						List<String> materials = Config.getMaterialList();
-						Material default_material = Config.getDefaultItem();
-						List<String> errors = new ArrayList<String>();
-						if(default_material == null) {
-							errors.add(ChatColor.GOLD + "The default-item material is an invalid material.");
-						}
-						else {
-							if(default_material.isBlock() || default_material.isEdible()) {
-								errors.add(ChatColor.GOLD + "The default-item material " + ChatColor.RED + default_material.toString() + ChatColor.GOLD + " is an invalid material because it can be placed or is edible.");
-							}
-						}
-						for (String mat : materials) {
-							Material item_mat = getMaterial(mat);
-							if(item_mat == null) {
-								errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material.");
-							}
-							else {
-								if(item_mat.isBlock() || item_mat.isEdible()) {
-									errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material because it can be placed or is edible.");
-								}
-							}
-						}
-						if(errors.size() > 0) {
-							msgPlayer(p, ChatColor.DARK_RED + "Errors:");
-							for (String err : errors) {
-								p.sendMessage(err); // Again do not want to add "[BrickThrower] every time.
-							}
-						}
-						else {
-							msgPlayer(p, "There was no errors!");
-						}
-						
-					}
-					else {
+					} else {
 						return false;
 					}
 					return true;
@@ -223,7 +173,6 @@ public class BrickThrowerCommand implements CommandExecutor {
 				p.sendMessage(ChatColor.RED + "/brickthrower get [material]" + ChatColor.GOLD + " - This command gives you bricks that you can throw.");
 				p.sendMessage(ChatColor.RED + "/brickthrower reload" + ChatColor.GOLD + " - This command reloads the config.");
 				p.sendMessage(ChatColor.RED + "/brickthrower list" + ChatColor.GOLD + " - This command lists all of the materials you can use with the /brickthrower get command.");
-				p.sendMessage(ChatColor.RED + "/brickthrower checkconfig" + ChatColor.GOLD + " - This command goes through the items list and default-item in the config and tells you if there are invalid material types.");
 			}
 		}
 		return false;
