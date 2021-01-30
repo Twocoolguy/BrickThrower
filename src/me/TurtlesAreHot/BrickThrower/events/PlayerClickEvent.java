@@ -6,6 +6,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,6 +19,11 @@ public class PlayerClickEvent implements Listener {
 	
 	@EventHandler
 	public void onPlayerClick(PlayerInteractEvent event) {
+		Action action = event.getAction();
+		if(!(action == Action.RIGHT_CLICK_AIR) && !(action == Action.RIGHT_CLICK_BLOCK)) {
+			// Checks and sees what the event action is. If it isn't a right click on a block or air we do not want to do anything.
+			return;
+		}
 		if (event.getItem() == null) {
 			// Checks if the event item is air, if it is we do not want to do anything because the program will error.
 			return;
