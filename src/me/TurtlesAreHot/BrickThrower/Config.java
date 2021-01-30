@@ -14,6 +14,10 @@ public class Config {
 	
 	public static void reloadConfig() {
 		config = JavaPlugin.getPlugin(Main.class).getConfig();
+		reloadVersion();
+	}
+
+	public static void reloadVersion() {
 		String server_ver = Bukkit.getVersion();
 		String non_fixed_version = Bukkit.getServer().getBukkitVersion().split("-")[0];
 		non_fixed_version.replaceAll("_", ".");
