@@ -2,6 +2,7 @@ package me.TurtlesAreHot.BrickThrower.events;
 
 import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -74,6 +75,13 @@ public class PlayerClickEvent implements Listener {
 			return;
 		}
 		if(info.equals("true")) {
+			if(event.isBlockInHand()) {
+				//Checks if there is something that you can place in your hand.
+				if(action == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() != Material.AIR) {
+					// Canceling the event that places a block.
+					event.setCancelled(true);
+				}
+			}
 			// Creates a itemstack of bricks with just one ands sets up all information about the brick.
 			ItemStack brick = new ItemStack(held.getType(), 1);
 			ItemMeta brick_im = brick.getItemMeta();
