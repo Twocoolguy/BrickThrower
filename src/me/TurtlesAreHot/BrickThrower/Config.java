@@ -15,7 +15,14 @@ public class Config {
 	public static void reloadConfig() {
 		config = JavaPlugin.getPlugin(Main.class).getConfig();
 		String server_ver = Bukkit.getVersion();
-		version = server_ver.substring(server_ver.indexOf("(MC: ")+5, server_ver.indexOf("(MC: ")+9);
+		String non_fixed_version = Bukkit.getServer().getBukkitVersion().split("-")[0];
+		non_fixed_version.replaceAll("_", ".");
+		version = non_fixed_version;
+		String ver_fix = version.substring(0, version.lastIndexOf("."));
+		if(!(ver_fix.equals("1"))) {
+			//This is in case the version is like "1.12" or "1.8" etc
+			version = ver_fix;
+		}
 	}
 	
 	public static Material getDefaultItem() {
@@ -44,5 +51,52 @@ public class Config {
 	
 	public static int getDisappearTime() {
 		return config.getInt("item-disappear-time");
+	}
+
+	public static boolean oldServer() {
+		boolean result = false;
+		switch(version) {
+			case "1.12":
+				result = true;
+				break;
+			case "1.11":
+				result = true;
+				break;
+			case "1.10":
+				result = true;
+				break;
+			case "1.9":
+				result = true;
+				break;
+			case "1.8":
+				result = true;
+				break;
+			default:
+				result = false;
+		}
+		return result;
+	}
+
+	public static boolean twelveAndAbove() {
+		boolean result = true;
+		switch(version) {
+			case "1.11":
+				result = false;
+				break;
+			case "1.10":
+				result = false;
+				break;
+			case "1.9":
+				result = false;
+				break;
+			case "1.8":
+				result = false;
+				break;
+			default:
+				result = true;
+		}
+
+		return result;
+
 	}
 }
