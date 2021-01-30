@@ -68,35 +68,32 @@ public class BrickThrowerCommand implements CommandExecutor {
 						Material default_item = Config.getDefaultItem();
 						if(default_item == null) {
 							msgPlayer(p, "BrickThrower has encountered an error: " + ChatColor.RED + "The config option for 'default-item' is set to an invalid item. Please change it to a valid item. The item type will be set to bricks because of this.");
-							default_item = Material.BRICK;
-						}
-						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
-						if(Config.oldServer()) {
-							heavyBrick.setType(Material.getMaterial("CLAY_BRICK"));
-							if(args.length > 1) {
-								msgPlayer(p, "Versions 1.12 and below only support the material clay brick. Sorry.");
+							if(Config.oldServer()) {
+								default_item = Material.getMaterial("CLAY_BRICK");
+							}
+							else {
+								default_item = Material.BRICK;
 							}
 						}
-						else {
-							if (args.length > 1) {
-								if (hasPermissionMessage(p, "brickthrower.getother")) {
-									List<String> items = Config.getMaterialList();
-									String param = args[1];
-									if (items.contains(param.toUpperCase())) {
-										Material fixed_item = getMaterial(param.toUpperCase());
-										if (fixed_item == null) {
-											msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
-											return false;
-										} else {
-											heavyBrick.setType(fixed_item);
-										}
-									} else {
-										msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
+						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
+						if (args.length > 1) {
+							if (hasPermissionMessage(p, "brickthrower.getother")) {
+								List<String> items = Config.getMaterialList();
+								String param = args[1];
+								if (items.contains(param.toUpperCase())) {
+									Material fixed_item = getMaterial(param.toUpperCase());
+									if (fixed_item == null) {
+										msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
 										return false;
+									} else {
+										heavyBrick.setType(fixed_item);
 									}
 								} else {
+									msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
 									return false;
 								}
+							} else {
+								return false;
 							}
 						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
@@ -144,10 +141,6 @@ public class BrickThrowerCommand implements CommandExecutor {
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("list")) {
-					if (Config.oldServer()) {
-						msgPlayer(p, "There is no extra materials you can choose from on 1.12 and below.");
-						return false;
-					}
 					if (hasPermissionMessage(p, "brickthrower.list")) {
 						List<String> materials = Config.getMaterialList();
 						msgPlayer(p, "Valid Materials:");
