@@ -1,4 +1,4 @@
-# BrickThrower v1.2.4 Source
+# BrickThrower v1.3.0 Source
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. 
 
