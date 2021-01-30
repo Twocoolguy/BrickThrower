@@ -82,6 +82,9 @@ public class PlayerClickEvent implements Listener {
 					event.setCancelled(true);
 				}
 			}
+			if(held.getType().isEdible()) {
+				event.setCancelled(true);
+			}
 			// Creates a itemstack of bricks with just one ands sets up all information about the brick.
 			ItemStack brick = new ItemStack(held.getType(), 1);
 			ItemMeta brick_im = brick.getItemMeta();
