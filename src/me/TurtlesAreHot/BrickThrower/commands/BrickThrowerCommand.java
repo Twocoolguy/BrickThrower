@@ -18,6 +18,9 @@ import me.TurtlesAreHot.BrickThrower.Config;
 import me.TurtlesAreHot.BrickThrower.Main;
 import net.md_5.bungee.api.ChatColor;
 
+import static org.bukkit.Material.getMaterial;
+
+
 public class BrickThrowerCommand implements CommandExecutor {
 	public boolean hasPermissionMessage(Player player, String permission) {
 		// This function checks if the player has permission and returns true if they do and false if they do not.
@@ -55,7 +58,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 						}
 						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
 						if(Config.oldServer()) {
-							heavyBrick.setType(Material.LEGACY_CLAY_BRICK);
+							heavyBrick.setType(getMaterial("CLAY_BRICK"));
 							if(args.length > 1) {
 								msgPlayer(p, "Versions 1.12 and below only support the material clay brick. Sorry.");
 							}
@@ -66,7 +69,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 									List<String> items = Config.getMaterialList();
 									String param = args[1];
 									if (items.contains(param.toUpperCase())) {
-										Material fixed_item = Material.getMaterial(param.toUpperCase());
+										Material fixed_item = getMaterial(param.toUpperCase());
 										if (fixed_item == null) {
 											msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
 											return false;
@@ -94,16 +97,22 @@ public class BrickThrowerCommand implements CommandExecutor {
  						switch(version) {
 							case "1.13":
 								heavyBrick = NBT13.setNBTData(heavyBrick, "brickthrower_item", "true");
+								break;
 							case "1.12":
 								heavyBrick = NBT12.setNBTData(heavyBrick, "brickthrower_item", "true");
+								break;
 							case "1.11":
 								heavyBrick = NBT11.setNBTData(heavyBrick, "brickthrower_item", "true");
+								break;
 							case "1.10":
 								heavyBrick = NBT10.setNBTData(heavyBrick, "brickthrower_item", "true");
+								break;
 							case "1.9":
 								heavyBrick = NBT9.setNBTData(heavyBrick, "brickthrower_item", "true");
+								break;
 							case "1.8":
 								heavyBrick = NBT8.setNBTData(heavyBrick, "brickthrower_item", "true");
+								break;
 							default:
 								heavyBrick = NBT14.setNBTData(heavyBrick, "brickthrower_item", "true");
 						}
@@ -160,7 +169,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 							}
 						}
 						for (String mat : materials) {
-							Material item_mat = Material.getMaterial(mat);
+							Material item_mat = getMaterial(mat);
 							if(item_mat == null) {
 								errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material.");
 							}
