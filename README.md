@@ -14,6 +14,7 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 
 ### 1.3.0:
 - Add damage to players when bricks are thrown at them.
+- Allow older versions to use items of their choice
 - Don't allow players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data.
 
 ## Note
