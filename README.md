@@ -10,11 +10,11 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 
 ### 1.3.0:
 - Add damage to players when bricks are thrown at them.
-- Allow older versions to use items of their choice
-- Don't allow players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data.
-- Add ability to allow console to reload config even if the option is set to false in the config.
-- Improve performance of the plugin
-- Remove checkconfig command because it will no longer be useful.
+- Allow older versions to use items of their choice (COMPLETE)
+- Don't allow players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data. (COMPLETE)
+- Add ability to allow console to reload config even if the option is set to false in the config. (COMPLETE)
+- Improve performance of the plugin (COMPLETE)
+- Remove checkconfig command because it will no longer be useful. (COMPLETE)
 
 ## Note
 1.3.0 will be the final content update of BrickThrower. Things will not be added after this. Any updates will be for: 
