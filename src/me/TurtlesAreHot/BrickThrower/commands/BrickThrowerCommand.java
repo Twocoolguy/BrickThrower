@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -42,6 +43,19 @@ public class BrickThrowerCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			// Checks if the sender is not a player because only in-game players can use this plugin.
+			if(sender instanceof ConsoleCommandSender) {
+				if(label.equalsIgnoreCase("brickthrower") || label.equalsIgnoreCase("brth")) {
+					if(args.length > 0) {
+						if(args[0].equalsIgnoreCase("reload")) {
+							JavaPlugin.getPlugin(Main.class).reloadConfig();
+							Config.reloadConfig();
+							ConsoleCommandSender ccs = (ConsoleCommandSender) sender;
+							sender.sendMessage("[BrickThrower] BrickThrower has been reloaded!");
+							return true;
+						}
+					}
+				}
+			}
 			sender.getServer().getLogger().info("You cannot use this plugin in console!");
 			return false;
 		}
@@ -129,7 +143,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 							Config.reloadConfig();
 						}
 						else {
-							msgPlayer(p, "Reloading was disabled in the config. A server restart is required to change the config.");
+							msgPlayer(p, "Reloading was disabled in the config. To reload changes in the config you either run this command through console, do /reload, or restart the server.");
 						}
 					}
 					return true;
