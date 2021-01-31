@@ -39,7 +39,7 @@ This is not due to me not having interest in the plugin, more that the plugin is
 
 
 ### 1.3.0:
-- Added damage to players when bricks are thrown at them.
+- Added damage to any living entity when bricks are thrown at them. Set damage to 0 in the config to toggle this off.
 - Allowed older versions to use items of their choice
 - Stoped allowing players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data. This allows them to be used with brickthrower.
 - Added the ability to allow console to reload config even if the option is set to false in the config.
