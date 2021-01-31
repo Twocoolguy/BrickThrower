@@ -1,6 +1,5 @@
 package me.TurtlesAreHot.BrickThrower.commands;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import me.TurtlesAreHot.BrickThrower.version.*;
