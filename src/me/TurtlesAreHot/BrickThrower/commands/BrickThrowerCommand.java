@@ -1,6 +1,5 @@
 package me.TurtlesAreHot.BrickThrower.commands;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import me.TurtlesAreHot.BrickThrower.version.*;
@@ -8,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -42,6 +42,19 @@ public class BrickThrowerCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			// Checks if the sender is not a player because only in-game players can use this plugin.
+			if(sender instanceof ConsoleCommandSender) {
+				if(label.equalsIgnoreCase("brickthrower") || label.equalsIgnoreCase("brth")) {
+					if(args.length > 0) {
+						if(args[0].equalsIgnoreCase("reload")) {
+							JavaPlugin.getPlugin(Main.class).reloadConfig();
+							Config.reloadConfig();
+							ConsoleCommandSender ccs = (ConsoleCommandSender) sender;
+							sender.sendMessage("[BrickThrower] BrickThrower has been reloaded!");
+							return true;
+						}
+					}
+				}
+			}
 			sender.getServer().getLogger().info("You cannot use this plugin in console!");
 			return false;
 		}
@@ -54,41 +67,33 @@ public class BrickThrowerCommand implements CommandExecutor {
 						Material default_item = Config.getDefaultItem();
 						if(default_item == null) {
 							msgPlayer(p, "BrickThrower has encountered an error: " + ChatColor.RED + "The config option for 'default-item' is set to an invalid item. Please change it to a valid item. The item type will be set to bricks because of this.");
-							default_item = Material.BRICK;
+							if(Config.oldServer()) {
+								default_item = Material.getMaterial("CLAY_BRICK");
+							}
+							else {
+								default_item = Material.BRICK;
+							}
 						}
 						ItemStack heavyBrick = new ItemStack(default_item, Config.getBricksGiven());
-						if(Config.oldServer()) {
-							heavyBrick.setType(getMaterial("CLAY_BRICK"));
-							if(args.length > 1) {
-								msgPlayer(p, "Versions 1.12 and below only support the material clay brick. Sorry.");
-							}
-						}
-						else {
-							if (args.length > 1) {
-								if (hasPermissionMessage(p, "brickthrower.getother")) {
-									List<String> items = Config.getMaterialList();
-									String param = args[1];
-									if (items.contains(param.toUpperCase())) {
-										Material fixed_item = getMaterial(param.toUpperCase());
-										if (fixed_item == null) {
-											msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
-											return false;
-										} else {
-											heavyBrick.setType(fixed_item);
-										}
-									} else {
-										msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
+						if (args.length > 1) {
+							if (hasPermissionMessage(p, "brickthrower.getother")) {
+								List<String> items = Config.getMaterialList();
+								String param = args[1];
+								if (items.contains(param.toUpperCase())) {
+									Material fixed_item = getMaterial(param.toUpperCase());
+									if (fixed_item == null) {
+										msgPlayer(p, "The item that you gave was not a valid item in Minecraft. Please choose a different item.");
 										return false;
+									} else {
+										heavyBrick.setType(fixed_item);
 									}
 								} else {
+									msgPlayer(p, "This is not a valid item listed. Please choose a valid one.");
 									return false;
 								}
+							} else {
+								return false;
 							}
-						}
-						if(!(Config.oldServer()) && (heavyBrick.getType().isBlock() || heavyBrick.getType().isEdible())) {
-							// Checks if the item is placeable/edible.
-							msgPlayer(p, "The item that is trying to be used is placeable. You cannot throw placeable/edible items.");
-							return false;
 						}
 						ItemMeta im = heavyBrick.getItemMeta(); 
 						im.setDisplayName(Config.getItemName());
@@ -129,68 +134,19 @@ public class BrickThrowerCommand implements CommandExecutor {
 							Config.reloadConfig();
 						}
 						else {
-							msgPlayer(p, "Reloading was disabled in the config. A server restart is required to change the config.");
+							msgPlayer(p, "Reloading was disabled in the config. To reload changes in the config you either run this command through console, do /reload, or restart the server.");
 						}
 					}
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("list")) {
-					if(Config.oldServer()) {
-						msgPlayer(p, "There is no extra materials you can choose from on 1.12 and below.");
-						return false;
-					}
 					if (hasPermissionMessage(p, "brickthrower.list")) {
 						List<String> materials = Config.getMaterialList();
 						msgPlayer(p, "Valid Materials:");
 						for (String mat : materials) {
 							p.sendMessage(ChatColor.RED + mat); // This message send remains the same because we don't want to add "[BrickThrower]" every time.
 						}
-					}
-					else {
-						return false;
-					}
-					return true;
-				}
-				else if (args[0].equalsIgnoreCase("checkconfig")) {
-					if(Config.oldServer()) {
-						msgPlayer(p, "Any extra items do not work on 1.12 and below, so there is no point in checking if they are valid.");
-						return false;
-					}
-					if (hasPermissionMessage(p, "brickthrower.checkconfig")) {
-						List<String> materials = Config.getMaterialList();
-						Material default_material = Config.getDefaultItem();
-						List<String> errors = new ArrayList<String>();
-						if(default_material == null) {
-							errors.add(ChatColor.GOLD + "The default-item material is an invalid material.");
-						}
-						else {
-							if(default_material.isBlock() || default_material.isEdible()) {
-								errors.add(ChatColor.GOLD + "The default-item material " + ChatColor.RED + default_material.toString() + ChatColor.GOLD + " is an invalid material because it can be placed or is edible.");
-							}
-						}
-						for (String mat : materials) {
-							Material item_mat = getMaterial(mat);
-							if(item_mat == null) {
-								errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material.");
-							}
-							else {
-								if(item_mat.isBlock() || item_mat.isEdible()) {
-									errors.add(ChatColor.GOLD + "The item material " + ChatColor.RED + mat + ChatColor.GOLD + " is an invalid material because it can be placed or is edible.");
-								}
-							}
-						}
-						if(errors.size() > 0) {
-							msgPlayer(p, ChatColor.DARK_RED + "Errors:");
-							for (String err : errors) {
-								p.sendMessage(err); // Again do not want to add "[BrickThrower] every time.
-							}
-						}
-						else {
-							msgPlayer(p, "There was no errors!");
-						}
-						
-					}
-					else {
+					} else {
 						return false;
 					}
 					return true;
@@ -209,7 +165,6 @@ public class BrickThrowerCommand implements CommandExecutor {
 				p.sendMessage(ChatColor.RED + "/brickthrower get [material]" + ChatColor.GOLD + " - This command gives you bricks that you can throw.");
 				p.sendMessage(ChatColor.RED + "/brickthrower reload" + ChatColor.GOLD + " - This command reloads the config.");
 				p.sendMessage(ChatColor.RED + "/brickthrower list" + ChatColor.GOLD + " - This command lists all of the materials you can use with the /brickthrower get command.");
-				p.sendMessage(ChatColor.RED + "/brickthrower checkconfig" + ChatColor.GOLD + " - This command goes through the items list and default-item in the config and tells you if there are invalid material types.");
 			}
 		}
 		return false;

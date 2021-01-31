@@ -5,7 +5,9 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import me.TurtlesAreHot.BrickThrower.version.*;
 
 public class Config {
 	
@@ -14,6 +16,10 @@ public class Config {
 	
 	public static void reloadConfig() {
 		config = JavaPlugin.getPlugin(Main.class).getConfig();
+		reloadVersion();
+	}
+
+	public static void reloadVersion() {
 		String server_ver = Bukkit.getVersion();
 		String non_fixed_version = Bukkit.getServer().getBukkitVersion().split("-")[0];
 		non_fixed_version.replaceAll("_", ".");
@@ -52,6 +58,8 @@ public class Config {
 	public static int getDisappearTime() {
 		return config.getInt("item-disappear-time");
 	}
+
+	public static double getItemDamage() { return config.getDouble("item-damage"); }
 
 	public static boolean oldServer() {
 		boolean result = false;
@@ -98,5 +106,32 @@ public class Config {
 
 		return result;
 
+	}
+
+	public static String getNBTData(ItemStack item, String key) {
+		String data = null;
+		switch(version) {
+			case "1.13":
+				data = NBT13.getNBTDataString(item, key);
+				break;
+			case "1.12":
+				data = NBT12.getNBTDataString(item, key);
+				break;
+			case "1.11":
+				data = NBT11.getNBTDataString(item, key);
+				break;
+			case "1.10":
+				data = NBT10.getNBTDataString(item, key);
+				break;
+			case "1.9":
+				data = NBT9.getNBTDataString(item, key);
+				break;
+			case "1.8":
+				data = NBT8.getNBTDataString(item, key);
+				break;
+			default:
+				data = NBT14.getNBTDataString(item, key);
+		}
+		return data;
 	}
 }

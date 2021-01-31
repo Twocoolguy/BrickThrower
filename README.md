@@ -1,34 +1,17 @@
-# BrickThrower v1.2.4 Source
+# BrickThrower v1.3.0 Source
 
-BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. 
-
-
-## v1.2.4 Update Note
-In the most recent update (v1.2.4) a lot of code was rewritten to be faster and better than it was originally. We also added support for 5 other versions of Minecraft (1.8, 1.9, 1.10, 1.11, and 1.12). Since so much code was changed to allow compatibility between these versions and the fact that there is new faster code in general, more than likely are a lot of bugs in this update. While I went through and found a lot of them and patched them, that does not mean that you may not have found some yourself. If you find any please report them and explain in detail how to reproduce them and what exactly happens. A gif/video of it happening may also help. If the bug is config related please give us the config. This will help us make the plugin better for everyone. Thank you.
+BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. For more advanced information please visit our wiki here: https://github.com/Twocoolguy/BrickThrower/wiki
 
 ## Contributing
-This GitHub place is where you can create issues and make pull requests. Feel free to do that, though before making major changes, please create a suggestion in our discord server here: https://discord.gg/TyZM6ePB65 and go into the BrickThrower suggestions channel and make a suggestion there. With enough upvotes we will consider it as an addition.
-
-
-## Planned Updates 
-
-### 1.3.0:
-- Add damage to players when bricks are thrown at them.
-- Allow older versions to use items of their choice
-- Don't allow players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data.
-- Add ability to allow console to reload config even if the option is set to false in the config.
-- Improve performance of the plugin
+There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 
 ## Note
-1.3.0 will be the final content update of BrickThrower. Things will not be added after this. Any updates will be for: 
+1.3.0 is the final content update of BrickThrower. Things will not be added after this. Any updates are for: 
 - Support for newer versions of Minecraft
 - Bug patches
 - Documentation
 
-This is not due to me not having interest in the plugin, more that the plugin is complete. There would be nothing else that I would have interest into adding to the plugin as anything more would push away from the point of the plugin. I also want to work on other plugins. This plugin has been a lot of fun to work on. :)
-
-
-After 1.3.0 there will be a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). 
+This is not due to me not having interest in the plugin, more that the plugin is complete. There is nothing else that I would have interest into adding to the plugin as anything more would push away from the point of the plugin. I also want to work on other plugins. This plugin has been a lot of fun to work on. :)
 
 ## Finished Updates
 
@@ -53,3 +36,12 @@ After 1.3.0 there will be a new branch called "wip". This branch will be for any
   - 1.10
   - 1.9
   - 1.8
+
+
+### 1.3.0:
+- Added damage to any living entity when bricks are thrown at them. Set damage to 0 in the config to toggle this off.
+- Allowed older versions to use items of their choice
+- Stoped allowing players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data. This allows them to be used with brickthrower.
+- Added the ability to allow console to reload config even if the option is set to false in the config.
+- Improved performance of the plugin.
+- Removed the checkconfig command because it was no longer useful.

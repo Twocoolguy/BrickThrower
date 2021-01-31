@@ -1,6 +1,6 @@
 main: me.TurtlesAreHot.BrickThrower.Main
 name: BrickThrower
-version: 1.2.4
+version: 1.3.0
 description: This plugin was created as a way to throw bricks!
 author: TurtlesAreHot
 api-version: 1.13
@@ -25,9 +25,6 @@ permissions:
   brickthrower.list:
     description: Lists the Materials you can get from the BrickThrower get command.
     default: op
-  brickthrower.checkconfig:
-    description: Checks the config for any invalid material types.
-    default: op
   brickthrower.*:
     description: Wildcard permission
     default: op
@@ -36,5 +33,4 @@ permissions:
       brickthrower.get: true
       brickthrower.reload: true
       brickthrower.getother: true
-      brickthrower.checkconfig: true
       brickthrower.list: true
