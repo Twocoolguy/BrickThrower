@@ -3,7 +3,7 @@
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. 
 
 ## Contributing
-This GitHub place is where you can create issues and make pull requests. Feel free to do that, though before making major changes, please create a suggestion in our discord server here: https://discord.gg/TyZM6ePB65 and go into the BrickThrower suggestions channel and make a suggestion there. With enough upvotes we will consider it as an addition.
+There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 
 ## Note
 1.3.0 is the final content update of BrickThrower. Things will not be added after this. Any updates are for: 
@@ -12,9 +12,6 @@ This GitHub place is where you can create issues and make pull requests. Feel fr
 - Documentation
 
 This is not due to me not having interest in the plugin, more that the plugin is complete. There is nothing else that I would have interest into adding to the plugin as anything more would push away from the point of the plugin. I also want to work on other plugins. This plugin has been a lot of fun to work on. :)
-
-
-There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). 
 
 ## Finished Updates
 
