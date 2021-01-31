@@ -1,23 +1,26 @@
 package me.TurtlesAreHot.BrickThrower.events;
 
-import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.TurtlesAreHot.BrickThrower.Config;
 import me.TurtlesAreHot.BrickThrower.Main;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.List;
 
 public class PlayerClickEvent implements Listener {
-	
+
+
 	@EventHandler
 	public void onPlayerClick(PlayerInteractEvent event) {
 		Action action = event.getAction();
@@ -31,46 +34,30 @@ public class PlayerClickEvent implements Listener {
 		}
 		Player p = event.getPlayer();
 		String version = Config.getServerVersion(); // Gives us the server version.
+		PlayerInventory pi = p.getInventory();
 		if(version.equals("1.8")) {
-			if(p.getInventory().getItem(p.getInventory().getHeldItemSlot()) == null) {
+			if(pi.getItem(pi.getHeldItemSlot()) == null) {
 				return;
 			}
 		}
-		else if (p.getInventory().getItemInMainHand() == null) {
+		else if (pi.getItemInMainHand() == null && pi.getItemInOffHand() == null) {
+			// This is for checks on older versions of minecraft.
 			return;
 		}
 		// Getting item in mainhand, this gets exactly what it is with the names.
 		ItemStack held = null;
 		if(version.equals("1.8")) {
-			held = p.getInventory().getItem(p.getInventory().getHeldItemSlot());
+			held = pi.getItem(p.getInventory().getHeldItemSlot());
 		}
 		else {
-			held = p.getInventory().getItemInMainHand();
+			if(pi.getItemInMainHand() == null || pi.getItemInMainHand().getType() == Material.AIR) {
+				held = pi.getItemInOffHand();
+			}
+			else {
+				held = pi.getItemInMainHand();
+			}
 		}
-		String info = null;
-		switch(version) {
-			case "1.13":
-				info = NBT13.getNBTDataString(held, "brickthrower_item");
-				break;
-			case "1.12":
-				info = NBT12.getNBTDataString(held, "brickthrower_item");
-				break;
-			case "1.11":
-				info = NBT11.getNBTDataString(held, "brickthrower_item");
-				break;
-			case "1.10":
-				info = NBT10.getNBTDataString(held, "brickthrower_item");
-				break;
-			case "1.9":
-				info = NBT9.getNBTDataString(held, "brickthrower_item");
-				break;
-			case "1.8":
-				info = NBT8.getNBTDataString(held, "brickthrower_item");
-				break;
-			default:
-				info = NBT14.getNBTDataString(held, "brickthrower_item");
-
-		}
+		String info = Config.getNBTData(held, "brickthrower_item");
 		if(info == null) {
 			return;
 		}
@@ -103,12 +90,17 @@ public class PlayerClickEvent implements Listener {
 			// Removes one of the bricks from the players inventory.
 			ItemStack eventItem = event.getItem();
 			if(eventItem.equals(held)) {
-				// This checks if the item that is trying to be thrown is in the off hand. Otherwise it doesn't throw it and it also does not remove any.
+				// This checks if the item that is trying to be thrown is in the off hand. Otherwise it doesn't throw it and it also does not remove any.w
 				if(!(Config.twelveAndAbove()) && held.getAmount() == 1) {
-					event.getPlayer().getInventory().remove(held);
+					if(!(Config.getServerVersion().equals("1.8")) && (p.getInventory().getItemInMainHand() == null || p.getInventory().getItemInMainHand().getType() == Material.AIR)) {
+						p.getInventory().setItemInOffHand(null);
+					}
+					else {
+						event.getPlayer().getInventory().remove(held);
+					}
 				}
 				else {
-					event.getItem().setAmount(held.getAmount()-1);
+					event.getItem().setAmount(held.getAmount() - 1);
 				}
 			}
 			// After the time in seconds defined in the config remove the brick.
@@ -120,7 +112,36 @@ public class PlayerClickEvent implements Listener {
 					}
 				}, itemTime*20L);
 			}
+			double itemDamage = Config.getItemDamage();
+			if(itemDamage > 0.0) {
+				new BukkitRunnable() {
+					@Override
+					public void run() {
+						// Get any entity that is nearby in this radius.
+						List<Entity> near = brock.getNearbyEntities(0.5, 1.0, 0.5);
+						for (Entity entity : near) {
+							if (entity instanceof LivingEntity) {
+								LivingEntity lEntity = (LivingEntity) entity;
+								if (lEntity instanceof Player) {
+									Player playerHit = (Player) lEntity;
+									if (playerHit.getUniqueId().equals(p.getUniqueId())) {
+										// Checks if the player who threw the item is the one getting hit (prevents the player from hitting themself)
+										continue;
+									}
+								}
+								lEntity.damage(itemDamage, p);
+								// Apply knockback
+								lEntity.setVelocity(brock.getVelocity());
+								brock.remove();
+								cancel();
+							}
+						}
+					}
+				}.runTaskTimer(JavaPlugin.getPlugin(Main.class), 0, 0);
+			}
+
 		}
 		
 	}
+
 }
