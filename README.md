@@ -5,6 +5,58 @@ BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks
 ## Contributing
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 
+## Current Things that need to be fixed
+- Remove ability to enchant items (1.8+)
+- Remove ability to smelt items in a furnace. (1.8+)
+- Remove ability to use stuff in a stonecutter. (1.14+)
+- Remove ability to fix stuff with anvil. (1.8+)
+- Remove ability to use cartography table with maps. (1.14+) 
+- Remove ability to use smoker furnace with stuff. (1.14+)
+- Remove ability to use blastfurnace with stuff. (1.14+)
+- Remove ability to use smithing table with stuff. (1.16+)
+- Remove ability to use loom with stuff. (1.14+)
+- Remove ability to use brewing stand with stuff. (1.8+)
+For any of the ones that has to do with a table/GUI I want there to be a config option to disable it. This is because this could in theory cause some lag and if the server operator doesn't care about these things (hence if it was like a creative server) they would want more performance. By default this would be enabled though.
+Other stuff:
+- Remove ability to use items in composter (1.14+)
+- Remove ability to operate with tools obtained through brickthrower (1.8+)
+- Remove ability to use a bow from brickthrower (1.8+)
+- Remove ability to right click bonemeal and grow stuff. (1.8+)
+- Remove ability to create maps. (1.8+)
+- Remove ability to feed a mob something from brickthrower. (1.8+)
+- Remove ability to use water/lava buckets. (1.8+)
+- Remove ability to drink potions from brickthrower. (1.8+)
+- Remove ability to splash potions from brickthrower. (1.8+)
+- Remove ability to create books with brickthrower. (1.8+)
+- Remove ability to spawn mobs with brickthrower. (1.8+)
+- Add a check for if your inventory is full with brickthrower get. (1.8+)
+- Remove ability to throw exp bottles from brickthrower. (1.8+)
+- Remove ability to use fishing rod from brickthrower. (1.8+)
+- Remove ability to place minecarts from brickthrower. (1.8+)
+- Remove ability to wear armor/elytras from brickthrower. (1.8+)
+- Remove ability to place boats with brickthrower. (1.8+)
+- Remove ability to place lily pads with brickthrower. (1.8+)
+- Remove ability to use fireworks from brickthrower. (1.8+)
+- Remove ability to wear heads from brickthrower. (1.8+)
+- Remove ability to place item-frames from brickthrower. (1.8+)
+- Remove ability to place end crystals from brickthrower. (1.9+)
+- Remove ability to throw eggs/snowballs from brickthrower. (1.8+)
+- Remove ability to dye sheep from brickthrower. (1.8+)
+- Remove ability to use horse armor from brickthrower. (1.8+)
+- Remove ability to use arrows from brickthrower. (1.8+)
+- Remove ability to use lingering potions from brickthrower. (1.9+)
+- Remove ability to use shields from brickthrower. (1.9+)
+- Remove ability to use enderpearls/ender eyes from brickthrower. (1.8+)
+- Remove ability to add things to cauldron from brickthrower. (1.8+)
+- Remove ability to use firecharge from brickthrower. (1.8+)
+- Remove ability to use discs from brickthrower. (1.8+)
+- Remove ability to use trident from brickthrower. (1.13+)
+- Remove ability to use crossbow from brickthrower. (1.14+)
+- Remove ability to use leads from brickthrower on mobs. (1.8+)
+
+Most of these will also have some kind of toggle to them in the config. This is again due to performance.
+
+
 ## Note
 1.3.0 is the final content update of BrickThrower. Things will not be added after this. Any updates are for: 
 - Support for newer versions of Minecraft
