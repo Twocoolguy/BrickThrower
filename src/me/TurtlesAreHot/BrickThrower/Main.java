@@ -3,14 +3,11 @@ package me.TurtlesAreHot.BrickThrower;
 import java.util.List;
 import java.util.ArrayList;
 
-import me.TurtlesAreHot.BrickThrower.events.EnchantEvent;
-import me.TurtlesAreHot.BrickThrower.events.FurnaceSmelt;
+import me.TurtlesAreHot.BrickThrower.events.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.TurtlesAreHot.BrickThrower.commands.BrickThrowerCommand;
-import me.TurtlesAreHot.BrickThrower.events.PlayerClickEvent;
-import me.TurtlesAreHot.BrickThrower.events.PrepareCraftEvent;
 
 public class Main extends JavaPlugin {
 	
@@ -44,6 +41,8 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new PrepareCraftEvent(), this);
 		this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
 		this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
+		this.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
+
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 		Config.reloadConfig(); // Sets up our configreader object in our Config class.
 	}
