@@ -7,10 +7,10 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 ## Finished Patches:
 - Remove ability to enchant items (1.8+)
 - Remove ability to smelt items in a furnace. (1.8+)
+- Remove ability to fix stuff with anvil. (1.8+)
 
 ## Current Things that need to be fixed
 - Remove ability to use stuff in a stonecutter. (1.14+)
-- Remove ability to fix stuff with anvil. (1.8+)
 - Remove ability to use cartography table with maps. (1.14+) 
 - Remove ability to use smoker furnace with stuff. (1.14+)
 - Remove ability to use blastfurnace with stuff. (1.14+)
