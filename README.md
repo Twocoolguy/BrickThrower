@@ -11,12 +11,12 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to use blastfurnace with stuff. (1.14+)
 - Remove ability to fix stuff with anvil. (1.8+)
 - Remove ability to use smithing table with stuff. (1.16+)
+- Remove ability to use brewing stand with stuff. (1.8+)
 
 ## Current Things that need to be fixed
 - Remove ability to use stuff in a stonecutter. (1.14+)
 - Remove ability to use cartography table with maps. (1.14+) 
 - Remove ability to use loom with stuff. (1.14+)
-- Remove ability to use brewing stand with stuff. (1.8+)
 
 For any of the ones that has to do with a table/GUI I want there to be a config option to disable it. This is because this could in theory cause some lag and if the server operator doesn't care about these things (hence if it was like a creative server) they would want more performance. By default this would be enabled though.
 
