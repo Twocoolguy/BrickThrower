@@ -107,7 +107,39 @@ public class Config {
 		return result;
 
 	}
-	
+	public static boolean sixteenAndAbove() {
+		boolean result = true;
+		switch(version) {
+			case "1.15":
+				result = false;
+				break;
+			case "1.14":
+				result = false;
+				break;
+			case "1.13":
+				result = false;
+				break;
+			case "1.12":
+				result = false;
+				break;
+			case "1.11":
+				result = false;
+				break;
+			case "1.10":
+				result = false;
+				break;
+			case "1.9":
+				result = false;
+				break;
+			case "1.8":
+				result = false;
+				break;
+			default:
+				result = true;
+		}
+
+		return result;
+	}
 	public static boolean fourteenAndAbove() {
 		boolean result = true;
 		switch(version) {
