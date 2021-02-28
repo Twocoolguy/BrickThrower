@@ -42,7 +42,9 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
 		this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
 		this.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
-
+		if(Config.sixteenAndAbove()) {
+			this.getServer().getPluginManager().registerEvents(new SmithingEvent(), this);
+		}
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 		Config.reloadConfig(); // Sets up our configreader object in our Config class.
 	}
