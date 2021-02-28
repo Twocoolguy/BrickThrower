@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import me.TurtlesAreHot.BrickThrower.events.EnchantEvent;
+import me.TurtlesAreHot.BrickThrower.events.FurnaceSmelt;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,6 +43,7 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new PlayerClickEvent(),  this); // Adding event listener for any listener in the Main class.
 		this.getServer().getPluginManager().registerEvents(new PrepareCraftEvent(), this);
 		this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
+		this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 		Config.reloadConfig(); // Sets up our configreader object in our Config class.
 	}
