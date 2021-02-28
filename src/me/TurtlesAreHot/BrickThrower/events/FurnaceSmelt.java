@@ -13,7 +13,10 @@ import org.bukkit.inventory.ItemStack;
 public class FurnaceSmelt implements Listener {
     @EventHandler
     public void onBurn(FurnaceBurnEvent e) {
-        if (e.getBlock().getType() == Material.FURNACE) {
+        Material blockType = e.getBlock().getType();
+        if (blockType == Material.FURNACE ||
+                (Config.fourteenAndAbove() && blockType == Material.BLAST_FURNACE) ||
+                (Config.fourteenAndAbove() && blockType == Material.SMOKER)) {
             Furnace fur = (Furnace) e.getBlock().getState();
             FurnaceInventory fi = fur.getInventory();
             ItemStack[] contents = fi.getContents();
