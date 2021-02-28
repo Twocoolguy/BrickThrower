@@ -2,13 +2,16 @@ package me.TurtlesAreHot.BrickThrower.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.StonecutterInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,6 +27,30 @@ public class PlayerClickEvent implements Listener {
 	@EventHandler
 	public void onPlayerClick(PlayerInteractEvent event) {
 		Action action = event.getAction();
+		if(!Config.getAllowInteracts()) {
+			if (Config.fourteenAndAbove() && action == Action.RIGHT_CLICK_BLOCK) {
+				Block eventBlock = event.getClickedBlock();
+				if (eventBlock.getType() != null) {
+					if (eventBlock.getType() == Material.COMPOSTER) {
+						if (event.getItem() == null) {
+							return;
+						}
+						ItemStack heldMain = event.getPlayer().getInventory().getItemInMainHand();
+						ItemStack heldOff = event.getPlayer().getInventory().getItemInOffHand();
+						if (heldMain != null || heldMain.getType() != Material.AIR) {
+							if (Config.getNBTData(heldMain, "brickthrower_item") != null) {
+								event.setCancelled(true);
+							}
+						}
+						if (heldOff != null || heldOff.getType() != Material.AIR) {
+							if (Config.getNBTData(heldOff, "brickthrower_item") != null) {
+								event.setCancelled(true);
+							}
+						}
+					}
+				}
+			}
+		}
 		if(!(action == Action.RIGHT_CLICK_AIR) && !(action == Action.RIGHT_CLICK_BLOCK)) {
 			// Checks and sees what the event action is. If it isn't a right click on a block or air we do not want to do anything.
 			return;
