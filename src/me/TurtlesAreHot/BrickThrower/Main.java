@@ -34,6 +34,8 @@ public class Main extends JavaPlugin {
 		config.addDefault("default-item", default_item_mat); // this is the default item that /brickthrower get will give.
 		config.addDefault("item-disappear-time", 2); // time until the item on the ground disappears. Put 0 to disable and allow pickup of the item.
 		config.addDefault("item-damage", 0.0);
+		config.addDefault("allow-interacts", false);
+		config.addDefault("allow-guis", false);
 
 		config.options().copyDefaults(true);
 		this.saveConfig();
