@@ -61,6 +61,10 @@ public class Config {
 
 	public static double getItemDamage() { return config.getDouble("item-damage"); }
 
+	public static boolean getAllowInteracts() { return config.getBoolean("allow-interacts"); }
+
+	public static boolean getAllowGuis() { return config.getBoolean("allow-guis"); }
+
 	public static boolean oldServer() {
 		boolean result = false;
 		switch(version) {
