@@ -42,6 +42,8 @@ public class Main extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
 		this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
 		this.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
+		this.getServer().getPluginManager().registerEvents(new BrewingFuelEvent(), this);
+		this.getServer().getPluginManager().registerEvents(new BrewingEvent(), this);
 		if(Config.sixteenAndAbove()) {
 			this.getServer().getPluginManager().registerEvents(new SmithingEvent(), this);
 		}
