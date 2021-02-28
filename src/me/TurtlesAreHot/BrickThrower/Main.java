@@ -41,13 +41,15 @@ public class Main extends JavaPlugin {
 		this.saveConfig();
 		this.getServer().getPluginManager().registerEvents(new PlayerClickEvent(),  this); // Adding event listener for any listener in the Main class.
 		this.getServer().getPluginManager().registerEvents(new PrepareCraftEvent(), this);
-		this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
-		this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
-		this.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
-		this.getServer().getPluginManager().registerEvents(new BrewingFuelEvent(), this);
-		this.getServer().getPluginManager().registerEvents(new BrewingEvent(), this);
-		if(Config.sixteenAndAbove()) {
-			this.getServer().getPluginManager().registerEvents(new SmithingEvent(), this);
+		if(!Config.getAllowGuis()) {
+			this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
+			this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
+			this.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
+			this.getServer().getPluginManager().registerEvents(new BrewingFuelEvent(), this);
+			this.getServer().getPluginManager().registerEvents(new BrewingEvent(), this);
+			if (Config.sixteenAndAbove()) {
+				this.getServer().getPluginManager().registerEvents(new SmithingEvent(), this);
+			}
 		}
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 		Config.reloadConfig(); // Sets up our configreader object in our Config class.
