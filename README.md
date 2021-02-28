@@ -58,7 +58,7 @@ Other stuff:
 - Remove ability to use leads from brickthrower on mobs. (1.8+)
 
 Most of these will also have some kind of toggle to them in the config. This is again due to performance.
-
+After these patches stuff must be retested. Also the native version changed to 1.16.5
 
 ## Note
 1.3.0 is the final content update of BrickThrower. Things will not be added after this. Any updates are for: 
