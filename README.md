@@ -13,6 +13,8 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to use smithing table with stuff. (1.16+)
 - Remove ability to use brewing stand with stuff. (1.8+)
 - Remove ability to use items in composter (1.14+)
+- Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
+- Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
 
 ## Current Things that need to be fixed
 - Remove ability to use stuff in a stonecutter. (1.14+)
