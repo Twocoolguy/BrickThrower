@@ -50,6 +50,9 @@ public class Main extends JavaPlugin {
 			if (Config.sixteenAndAbove()) {
 				this.getServer().getPluginManager().registerEvents(new SmithingEvent(), this);
 			}
+			if (Config.fourteenAndAbove()) {
+				this.getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+			}
 		}
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 		Config.reloadConfig(); // Sets up our configreader object in our Config class.
