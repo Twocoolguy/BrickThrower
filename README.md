@@ -19,6 +19,8 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
 
+## Have a bit of an idea. Basically, any time any interaction is happening with a brickthrower item in the main or off hand, cancel that interaction. This will patch MANY bugs.
+
 ## Current Things that need to be fixed
 - Remove ability to operate with tools obtained through brickthrower (1.8+)
 - Remove ability to use a bow from brickthrower (1.8+)
