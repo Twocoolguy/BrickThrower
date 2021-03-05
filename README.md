@@ -20,7 +20,10 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - This also means anything that you interact with by default will not be able to be interacted with if it is from brickthrower. This did remove a lot of bugs.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
 - Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
-
+- Remove ability to use leads from brickthrower on mobs. (1.8+)
+- Remove ability to dye sheep from brickthrower. (1.8+)
+- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it.
+- 
 ## Have a bit of an idea. Basically, any time any interaction is happening with a brickthrower item in the main or off hand, cancel that interaction. This will patch MANY bugs.
 
 ## Current Things that need to be fixed
@@ -31,12 +34,10 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to wear armor/elytras from brickthrower. (1.8+)
 - (KINDA FIXED...) Remove ability to place lily pads with brickthrower. (1.8+)
 - Remove ability to wear heads from brickthrower. (1.8+)
-- Remove ability to dye sheep from brickthrower. (1.8+)
 - Remove ability to use horse armor from brickthrower. (1.8+)
 - Remove ability to use arrows from brickthrower. (1.8+)
 - Remove ability to use shields from brickthrower. (1.9+)
 - Remove ability to use trident from brickthrower. (1.13+)
-- Remove ability to use leads from brickthrower on mobs. (1.8+)
 
 Most of these will also have some kind of toggle to them in the config. This is again due to performance.
 After these patches stuff must be retested. Also the native version changed to 1.16.5
