@@ -39,6 +39,7 @@ public class Main extends JavaPlugin {
 
 		config.options().copyDefaults(true);
 		this.saveConfig();
+		Config.reloadConfig();
 		this.getServer().getPluginManager().registerEvents(new PlayerClickEvent(),  this); // Adding event listener for any listener in the Main class.
 		this.getServer().getPluginManager().registerEvents(new PrepareCraftEvent(), this);
 		if(!Config.getAllowGuis()) {
@@ -54,8 +55,10 @@ public class Main extends JavaPlugin {
 				this.getServer().getPluginManager().registerEvents(new InventoryClick(), this);
 			}
 		}
+		if (!Config.getAllowInteracts()) {
+			this.getServer().getPluginManager().registerEvents(new InteractEntityEvent(), this);
+		}
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
-		Config.reloadConfig(); // Sets up our configreader object in our Config class.
 	}
 	
 	@Override
