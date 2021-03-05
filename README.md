@@ -17,6 +17,7 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to use cartography table with maps. (1.14+) 
 - Remove ability to use loom with stuff. (1.14+)
 - Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
+- This also means anything that you interact with by default will not be able to be interacted with if it is from brickthrower. This did remove a lot of bugs.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
 - Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
 
@@ -24,38 +25,17 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 
 ## Current Things that need to be fixed
 - Remove ability to operate with tools obtained through brickthrower (1.8+)
-- Remove ability to use a bow from brickthrower (1.8+)
-- Remove ability to right click bonemeal and grow stuff. (1.8+)
-- Remove ability to create maps. (1.8+)
 - Remove ability to feed a mob something from brickthrower. (1.8+)
-- Remove ability to use water/lava buckets. (1.8+)
-- Remove ability to drink potions from brickthrower. (1.8+)
-- Remove ability to splash potions from brickthrower. (1.8+)
 - Remove ability to create books with brickthrower. (1.8+)
-- Remove ability to spawn mobs with brickthrower. (1.8+)
 - Add a check for if your inventory is full with brickthrower get. (1.8+)
-- Remove ability to throw exp bottles from brickthrower. (1.8+)
-- Remove ability to use fishing rod from brickthrower. (1.8+)
-- Remove ability to place minecarts from brickthrower. (1.8+)
 - Remove ability to wear armor/elytras from brickthrower. (1.8+)
-- Remove ability to place boats with brickthrower. (1.8+)
-- Remove ability to place lily pads with brickthrower. (1.8+)
-- Remove ability to use fireworks from brickthrower. (1.8+)
+- (KINDA FIXED...) Remove ability to place lily pads with brickthrower. (1.8+)
 - Remove ability to wear heads from brickthrower. (1.8+)
-- Remove ability to place item-frames from brickthrower. (1.8+)
-- Remove ability to place end crystals from brickthrower. (1.9+)
-- Remove ability to throw eggs/snowballs from brickthrower. (1.8+)
 - Remove ability to dye sheep from brickthrower. (1.8+)
 - Remove ability to use horse armor from brickthrower. (1.8+)
 - Remove ability to use arrows from brickthrower. (1.8+)
-- Remove ability to use lingering potions from brickthrower. (1.9+)
 - Remove ability to use shields from brickthrower. (1.9+)
-- Remove ability to use enderpearls/ender eyes from brickthrower. (1.8+)
-- Remove ability to add things to cauldron from brickthrower. (1.8+)
-- Remove ability to use firecharge from brickthrower. (1.8+)
-- Remove ability to use discs from brickthrower. (1.8+)
 - Remove ability to use trident from brickthrower. (1.13+)
-- Remove ability to use crossbow from brickthrower. (1.14+)
 - Remove ability to use leads from brickthrower on mobs. (1.8+)
 
 Most of these will also have some kind of toggle to them in the config. This is again due to performance.
