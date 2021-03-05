@@ -23,11 +23,12 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to use leads from brickthrower on mobs. (1.8+)
 - Remove ability to dye sheep from brickthrower. (1.8+)
 - Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it.
-- 
+- Remove ability to operate with tools obtained through brickthrower (1.8+)
+
 ## Have a bit of an idea. Basically, any time any interaction is happening with a brickthrower item in the main or off hand, cancel that interaction. This will patch MANY bugs.
 
 ## Current Things that need to be fixed
-- Remove ability to operate with tools obtained through brickthrower (1.8+)
+- Remove ability to attack mobs with brickthrower items in hand.
 - Remove ability to create books with brickthrower. (1.8+)
 - Add a check for if your inventory is full with brickthrower get. (1.8+)
 - Remove ability to wear armor/elytras from brickthrower. (1.8+)
