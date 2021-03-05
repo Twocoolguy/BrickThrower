@@ -18,6 +18,7 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to use loom with stuff. (1.14+)
 - Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
+- Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
 
 ## Have a bit of an idea. Basically, any time any interaction is happening with a brickthrower item in the main or off hand, cancel that interaction. This will patch MANY bugs.
 
