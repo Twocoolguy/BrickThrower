@@ -16,6 +16,7 @@ import me.TurtlesAreHot.BrickThrower.Config;
 import me.TurtlesAreHot.BrickThrower.Main;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Date;
 import java.util.List;
 
 public class PlayerClickEvent implements Listener {
@@ -119,6 +120,7 @@ public class PlayerClickEvent implements Listener {
 					event.getItem().setAmount(held.getAmount() - 1);
 				}
 			}
+			Date dropTime = new Date();
 			// After the time in seconds defined in the config remove the brick.
 			if(itemTime != 0) {
 				Bukkit.getScheduler().scheduleSyncDelayedTask(JavaPlugin.getPlugin(Main.class),  new Runnable() {
@@ -133,6 +135,13 @@ public class PlayerClickEvent implements Listener {
 				new BukkitRunnable() {
 					@Override
 					public void run() {
+						if(itemTime != 0) {
+							// This checks to make sure that this event is canceled when the item is removed after the time.
+							Date currentTime = new Date();
+							if((currentTime.getTime() - dropTime.getTime()) / 1000 >= itemTime) {
+								cancel();
+							}
+						}
 						// Get any entity that is nearby in this radius.
 						List<Entity> near = brock.getNearbyEntities(0.5, 1.0, 0.5);
 						for (Entity entity : near) {
