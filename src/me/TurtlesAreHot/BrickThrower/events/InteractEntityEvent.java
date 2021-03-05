@@ -18,8 +18,8 @@ public class InteractEntityEvent implements Listener {
                 }
             }
         }
-        if(pi.getItemInMainHand() != null) {
-            if(Config.getNBTData(pi.getItemInMainHand(), "brickthrower_item") != null) {
+        if(pi.getItem(pi.getHeldItemSlot()) != null) {
+            if(Config.getNBTData(pi.getItem(pi.getHeldItemSlot()), "brickthrower_item") != null) {
                 e.setCancelled(true);
             }
         }
