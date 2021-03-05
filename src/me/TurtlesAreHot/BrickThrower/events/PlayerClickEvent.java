@@ -28,8 +28,8 @@ public class PlayerClickEvent implements Listener {
 		if(!Config.getAllowInteracts()) {
 			String version = Config.getServerVersion(); // Gives us the server version.
 			PlayerInventory pi = event.getPlayer().getInventory();
-			if(pi.getItemInMainHand() != null) {
-				if(Config.getNBTData(pi.getItemInMainHand(), "brickthrower_item") != null) {
+			if(pi.getItem(pi.getHeldItemSlot()) != null) {
+				if(Config.getNBTData(pi.getItem(pi.getHeldItemSlot()), "brickthrower_item") != null) {
 					event.setCancelled(true);
 				}
 			}
