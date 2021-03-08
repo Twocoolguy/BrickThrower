@@ -121,6 +121,10 @@ public class BrickThrowerCommand implements CommandExecutor {
 							default:
 								heavyBrick = NBT14.setNBTData(heavyBrick, "brickthrower_item", "true");
 						}
+						if(p.getInventory().firstEmpty() == -1) {
+							msgPlayer(p, "Your inventory is full so we were not able to give you any bricks!");
+							return false;
+						}
  						p.getInventory().addItem(heavyBrick);
 					}
 					return true;
