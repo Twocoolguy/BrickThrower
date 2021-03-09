@@ -29,9 +29,10 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to operate with tools obtained through brickthrower. (1.8+)
 - Remove ability to attack mobs with brickthrower items in hand. (1.8+)
 - Remove ability to use trident from brickthrower. (1.13+)
+- Add a check for if your inventory is full with brickthrower get. (1.8+)
 
 ## Things that have been "patched" but need to be tested
-- Add a check for if your inventory is full with brickthrower get. (1.8+)
+- N/A
 
 ## Current Things that need to be fixed
 - Remove ability to wear armor/elytras from brickthrower. (1.8+)
