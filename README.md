@@ -12,6 +12,7 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
 - This also means anything that you interact with by default will not be able to be interacted with if it is from brickthrower. This did remove a lot of bugs.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
+- Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
 
 ## All of these patches must be tested on each main version
 V = Tested and works properly
@@ -30,10 +31,9 @@ O = Tested but does not work properly.
 - Remove ability to use stuff in a stonecutter. (X - 1.14) (X - 1.15) (V - 1.16)
 - Remove ability to use cartography table with maps. (X - 1.14) (X - 1.15) (V - 1.16)
 - Remove ability to use loom with stuff. (X - 1.14) (X - 1.15) (V - 1.16)
-- Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
 - Remove ability to use leads from brickthrower on mobs. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (X - 1.15) (V - 1.16)
 - Remove ability to dye sheep from brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (X - 1.15) (V - 1.16)
-- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it.
+- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (X - 1.15) (V - 1.16)
 - Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (X - 1.15) (V - 1.16)
 - Remove ability to attack mobs with brickthrower items in hand. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (X - 1.15) (V - 1.16)
 - Remove ability to use trident from brickthrower. (X - 1.13) (X - 1.14) (X - 1.15) (V - 1.16)
