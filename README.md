@@ -35,12 +35,14 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - N/A
 
 ## Current Things that need to be fixed
-- Remove ability to wear armor/elytras from brickthrower. (1.8+)
-- Remove ability to wear heads from brickthrower. (1.8+)
 - (KINDA FIXED...) Remove ability to place lily pads with brickthrower. (1.8+)
+- Remove ability to use shields from brickthrower. (1.9+)
+
+## May be fixed later but not in this patch
 - Remove ability to use horse armor from brickthrower. (1.8+)
 - Remove ability to use arrows from brickthrower. (1.8+)
-- Remove ability to use shields from brickthrower. (1.9+)
+- Remove ability to wear armor/elytras from brickthrower. (1.8+)
+- Remove ability to wear heads from brickthrower. (1.8+)
 
 Most of these will also have some kind of toggle to them in the config. This is again due to performance.
 After these patches stuff must be retested. Also the native version changed to 1.16.5
