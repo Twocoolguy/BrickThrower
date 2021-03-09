@@ -30,14 +30,14 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Remove ability to attack mobs with brickthrower items in hand. (1.8+)
 - Remove ability to use trident from brickthrower. (1.13+)
 - Add a check for if your inventory is full with brickthrower get. (1.8+)
+- Remove ability to wear armor/elytras from brickthrower. (1.8+)
+- Remove ability to wear heads from brickthrower. (1.8+)
 
 ## Things that have been "patched" but need to be tested
 - N/A
 
 ## Current Things that need to be fixed
-- Remove ability to wear armor/elytras from brickthrower. (1.8+)
 - (KINDA FIXED...) Remove ability to place lily pads with brickthrower. (1.8+)
-- Remove ability to wear heads from brickthrower. (1.8+)
 - Remove ability to use horse armor from brickthrower. (1.8+)
 - Remove ability to use arrows from brickthrower. (1.8+)
 - Remove ability to use shields from brickthrower. (1.9+)
