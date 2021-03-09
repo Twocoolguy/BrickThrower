@@ -26,32 +26,5 @@ public class InventoryClick implements Listener {
                 e.setCancelled(true);
             }
         }
-        //slots for armor:
-        //helmet: 39
-        //chestplate: 38
-        //leggings: 37
-        //boots: 36
-        //Client side it may look like the armor still goes on sometimes, but really it isn't there.
-        if(e.getAction() == InventoryAction.PLACE_ALL ||
-                e.getAction() == InventoryAction.PLACE_ONE ||
-                e.getAction() == InventoryAction.PLACE_SOME ||
-        e.getAction() == InventoryAction.SWAP_WITH_CURSOR) {
-            if (e.getClickedInventory().getType() != null) {
-                InventoryType it = e.getClickedInventory().getType();
-                if (it == InventoryType.PLAYER) {
-                    if (e.getCursor() != null) {
-                        if(Config.getNBTData(e.getCursor(), "brickthrower_item") != null) {
-                            int slotClicked = e.getSlot();
-                            if(slotClicked == 39 ||
-                            slotClicked == 38 ||
-                            slotClicked == 37 ||
-                            slotClicked == 36) {
-                                e.setCancelled(true);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
