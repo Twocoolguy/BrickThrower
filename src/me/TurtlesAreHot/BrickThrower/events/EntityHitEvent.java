@@ -14,8 +14,10 @@ public class EntityHitEvent implements Listener {
         if(e.getDamager().getType() == EntityType.PLAYER) {
             Player p = (Player) e.getDamager();
             PlayerInventory pi = p.getInventory();
-            if(Config.getNBTData(pi.getItem(p.getInventory().getHeldItemSlot()), "brickthrower_item") != null) {
-                e.setCancelled(true);
+            if(pi.getItem(p.getInventory().getHeldItemSlot()) != null) {
+                if(Config.getNBTData(pi.getItem(p.getInventory().getHeldItemSlot()), "brickthrower_item") != null) {
+                    e.setCancelled(true);
+                }
             }
 
         }
