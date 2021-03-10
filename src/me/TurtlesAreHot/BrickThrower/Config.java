@@ -198,4 +198,29 @@ public class Config {
 		}
 		return data;
 	}
+
+	public static void setNBTData(ItemStack item, String key, String keyData) {
+		switch(version) {
+			case "1.13":
+				NBT13.setNBTData(item, key, keyData);
+				break;
+			case "1.12":
+				NBT12.setNBTData(item, key, keyData);
+				break;
+			case "1.11":
+				NBT11.setNBTData(item, key, keyData);
+				break;
+			case "1.10":
+				NBT10.setNBTData(item, key, keyData);
+				break;
+			case "1.9":
+				NBT9.setNBTData(item, key, keyData);
+				break;
+			case "1.8":
+				NBT8.setNBTData(item, key, keyData);
+				break;
+			default:
+				NBT14.setNBTData(item, key, keyData);
+		}
+	}
 }
