@@ -14,6 +14,21 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
 - Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
 
+
+# Need to do:
+Listen to this careful step by step on how to fix the issue with mobs not targetting you.
+1. Right before you throw the item, get the item that is in your hand and give it a special nbt flag that says it has been thrown (basically set its string to true).
+2. After this, it will throw the brick. Then one of two things happen.
+
+A. Item disappears:
+1. change the flag to false.
+
+B. Item hits a livingentity:
+1. Keep the flag set to true.
+2. Allow it to damage and target the livingentity
+3. In the entitydamageentityevent class if it is a player that caused the damage, check in their inventory for an item that contains the nbt data with the special flag set to true, if this data is set to true you want to not do anything in that event. Basically make sure that the event isn't called. I also want the first item to be checked be the one in the main hand, because more than likely this is where the item is.
+
+Doing all of this should patch the issue.
 ## All of these patches must be tested on each main version
 V = Tested and works properly
 
