@@ -97,7 +97,7 @@ public class BrickThrowerCommand implements CommandExecutor {
 						ItemMeta im = heavyBrick.getItemMeta();
 						im.setDisplayName(Config.getItemName());
 						heavyBrick.setItemMeta(im);
-						Config.setNBTData(heavyBrick, "brickthrower_item", "true");
+						heavyBrick = Config.setNBTData(heavyBrick, "brickthrower_item", "true");
 						if(p.getInventory().firstEmpty() == -1) {
 							msgPlayer(p, "Your inventory is full so we were not able to give you any bricks!");
 							return false;
