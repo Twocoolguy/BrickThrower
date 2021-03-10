@@ -17,7 +17,7 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 
 # Need to do:
 Listen to this careful step by step on how to fix the issue with mobs not targetting you.
-1. Right before you throw the item, get the item that is in your hand and give it a special nbt flag that says it has been thrown (basically set its string to true).
+1. Right before you throw the item, get the item that is in your hand and give it a special nbt flag that says it has been thrown (basically set its string to true). Also make it so the item that is being thrown is also given this flag.
 2. After this, it will throw the brick. Then one of two things happen.
 
 A. Item disappears:
@@ -27,6 +27,8 @@ B. Item hits a livingentity:
 1. Keep the flag set to true.
 2. Allow it to damage and target the livingentity
 3. In the entitydamageentityevent class if it is a player that caused the damage, check in their inventory for an item that contains the nbt data with the special flag set to true, if this data is set to true you want to not do anything in that event. Basically make sure that the event isn't called. I also want the first item to be checked be the one in the main hand, because more than likely this is where the item is.
+
+4. Make it so when you attempt to pickup an item, if it has this flag it is set to false.
 
 Doing all of this should patch the issue.
 ## All of these patches must be tested on each main version
