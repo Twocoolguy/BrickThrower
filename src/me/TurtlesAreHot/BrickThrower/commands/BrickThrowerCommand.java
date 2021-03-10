@@ -2,7 +2,6 @@ package me.TurtlesAreHot.BrickThrower.commands;
 
 import java.util.List;
 
-import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,11 +33,11 @@ public class BrickThrowerCommand implements CommandExecutor {
 		}
 		return perm;
 	}
-	
+
 	public void msgPlayer(Player p, String message) {
 		p.sendMessage(ChatColor.GOLD + "[BrickThrower] " + message);
 	}
-	
+
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			// Checks if the sender is not a player because only in-game players can use this plugin.
@@ -95,37 +94,15 @@ public class BrickThrowerCommand implements CommandExecutor {
 								return false;
 							}
 						}
-						ItemMeta im = heavyBrick.getItemMeta(); 
+						ItemMeta im = heavyBrick.getItemMeta();
 						im.setDisplayName(Config.getItemName());
- 						heavyBrick.setItemMeta(im);
- 						String version = Config.getServerVersion();
- 						switch(version) {
-							case "1.13":
-								heavyBrick = NBT13.setNBTData(heavyBrick, "brickthrower_item", "true");
-								break;
-							case "1.12":
-								heavyBrick = NBT12.setNBTData(heavyBrick, "brickthrower_item", "true");
-								break;
-							case "1.11":
-								heavyBrick = NBT11.setNBTData(heavyBrick, "brickthrower_item", "true");
-								break;
-							case "1.10":
-								heavyBrick = NBT10.setNBTData(heavyBrick, "brickthrower_item", "true");
-								break;
-							case "1.9":
-								heavyBrick = NBT9.setNBTData(heavyBrick, "brickthrower_item", "true");
-								break;
-							case "1.8":
-								heavyBrick = NBT8.setNBTData(heavyBrick, "brickthrower_item", "true");
-								break;
-							default:
-								heavyBrick = NBT14.setNBTData(heavyBrick, "brickthrower_item", "true");
-						}
+						heavyBrick.setItemMeta(im);
+						Config.setNBTData(heavyBrick, "brickthrower_item", "true");
 						if(p.getInventory().firstEmpty() == -1) {
 							msgPlayer(p, "Your inventory is full so we were not able to give you any bricks!");
 							return false;
 						}
- 						p.getInventory().addItem(heavyBrick);
+						p.getInventory().addItem(heavyBrick);
 					}
 					return true;
 				}
