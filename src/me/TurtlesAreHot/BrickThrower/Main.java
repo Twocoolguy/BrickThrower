@@ -57,7 +57,6 @@ public class Main extends JavaPlugin {
 		}
 		if (!Config.getAllowInteracts()) {
 			this.getServer().getPluginManager().registerEvents(new InteractEntityEvent(), this);
-			this.getServer().getPluginManager().registerEvents(new EntityHitEvent(), this);
 		}
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
 	}
