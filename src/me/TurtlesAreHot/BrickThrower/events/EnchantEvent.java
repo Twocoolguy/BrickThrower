@@ -16,11 +16,13 @@ public class EnchantEvent implements Listener {
         }
         else {
             ItemStack[] inv = e.getInventory().getContents();
-            for(int i = 0; i < inv.length; i++) {
-                if (inv[i] != null) {
-                    if(inv[i].getType() == Material.LAPIS_LAZULI) {
-                        if (Config.getNBTData(inv[i], "brickthrower_item") != null) {
-                            e.setCancelled(true);
+            if(!Config.twelveAndBelow()) {
+                for (int i = 0; i < inv.length; i++) {
+                    if (inv[i] != null) {
+                        if (inv[i].getType() == Material.LAPIS_LAZULI) {
+                            if (Config.getNBTData(inv[i], "brickthrower_item") != null) {
+                                e.setCancelled(true);
+                            }
                         }
                     }
                 }
