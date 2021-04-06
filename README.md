@@ -31,7 +31,7 @@ X = Not tested.
 
 O = Tested but does not work properly.
 
-- Ability to enchant items (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Ability to enchant items (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 - Remove ability to smelt items in a furnace. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 - Remove ability to fix stuff with anvil. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 - Remove ability to use brewing stand with stuff. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
