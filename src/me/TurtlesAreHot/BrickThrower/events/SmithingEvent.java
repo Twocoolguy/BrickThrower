@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.SmithingInventory;
 
 public class SmithingEvent implements Listener {
     @EventHandler
