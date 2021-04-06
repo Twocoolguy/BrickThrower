@@ -39,7 +39,6 @@ O = Tested but does not work properly.
 - Remove ability to dye sheep from brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (V - 1.15) (V - 1.16)
 - Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (V - 1.15) (V - 1.16)
 - Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to attack mobs with brickthrower items in hand. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (O - 1.15) (V - 1.16)
 - Remove ability to use trident from brickthrower. (X - 1.13) (X - 1.14) (V - 1.15) (V - 1.16)
 - Add a check for if your inventory is full with brickthrower get. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (V - 1.15) (V - 1.16)
 - Remove ability to place lily pads with brickthrower (They appear but are ghost blocks). (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (X - 1.14) (V - 1.15) (V - 1.16)
