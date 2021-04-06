@@ -13,7 +13,13 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - This also means anything that you interact with by default will not be able to be interacted with if it is from brickthrower. This did remove a lot of bugs.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
 - Fixed a bug where sometimes getNBTDataString from NBT14 (versions 1.14+) would cause a null pointer exception.
-
+- Removed the ability to cook brickthrower items/smelt brickthrower items in smokers.
+- Removed the ability to cook brickthrower items/smelt brickthrower items in blast furnaces.
+- Removed ability to use brickthrower items in a composter.
+- Removed ability to use brickthrower items with a stonecutter.
+- Removed ability to use brickthrower items with a cartography table.
+- Removed ability to use a loom with brickthrower items.
+- Removed ability to use a trident obtained through brickthrower. 
 
 # Need to do:
 Change it so instead of checking when an entity is hit, you check when the player clicks with a weapon/brickthrower item in their hand. This will allow throwing bricks to do damage.
@@ -25,23 +31,16 @@ X = Not tested.
 
 O = Tested but does not work properly.
 
-- Ability to enchant items (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to smelt items in a furnace. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use smoker furnace with stuff. (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use blastfurnace with stuff. (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to fix stuff with anvil. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use brewing stand with stuff. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use items in composter (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use stuff in a stonecutter. (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use cartography table with maps. (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use loom with stuff. (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use leads from brickthrower on mobs. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to dye sheep from brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use trident from brickthrower. (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Add a check for if your inventory is full with brickthrower get. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to place lily pads with brickthrower (They appear but are ghost blocks). (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (X - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Ability to enchant items (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to smelt items in a furnace. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to fix stuff with anvil. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (O - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to use brewing stand with stuff. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to use leads from brickthrower on mobs. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to dye sheep from brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Add a check for if your inventory is full with brickthrower get. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to place lily pads with brickthrower (They appear but are ghost blocks). (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (X - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 
 ## Things that have been "patched" but need to be tested
 - N/A.
