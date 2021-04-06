@@ -11,7 +11,11 @@ public class NBT12 {
         ItemStack nmsItem = item;
         net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(nmsItem);
         NBTTagCompound itemCompound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
-        return itemCompound.getString(key);
+        String result = itemCompound.getString(key);
+        if(result != null && !result.equals("true")) {
+            return null;
+        }
+        return result;
     }
 
     public static ItemStack setNBTData(ItemStack item, String key, String key_data) {
