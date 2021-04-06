@@ -172,6 +172,31 @@ public class Config {
 		return result;
 	}
 
+	public static boolean twelveAndBelow() {
+		boolean result = true;
+		switch(version) {
+			case "1.12":
+				result = true;
+				break;
+			case "1.11":
+				result = true;
+				break;
+			case "1.10":
+				result = true;
+				break;
+			case "1.9":
+				result = true;
+				break;
+			case "1.8":
+				result = true;
+				break;
+			default:
+				result = false;
+		}
+
+		return result;
+	}
+
 	public static String getNBTData(ItemStack item, String key) {
 		String data = null;
 		switch(version) {
