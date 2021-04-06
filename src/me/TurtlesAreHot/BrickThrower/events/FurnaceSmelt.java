@@ -1,7 +1,6 @@
 package me.TurtlesAreHot.BrickThrower.events;
 
 import me.TurtlesAreHot.BrickThrower.Config;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Furnace;
 import org.bukkit.event.EventHandler;
