@@ -16,6 +16,7 @@ import me.TurtlesAreHot.BrickThrower.Config;
 import me.TurtlesAreHot.BrickThrower.Main;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Date;
 import java.util.List;
 
 public class PlayerClickEvent implements Listener {
@@ -24,6 +25,22 @@ public class PlayerClickEvent implements Listener {
 	@EventHandler
 	public void onPlayerClick(PlayerInteractEvent event) {
 		Action action = event.getAction();
+		if(!Config.getAllowInteracts()) {
+			String version = Config.getServerVersion(); // Gives us the server version.
+			PlayerInventory pi = event.getPlayer().getInventory();
+			if(pi.getItem(pi.getHeldItemSlot()) != null) {
+				if(Config.getNBTData(pi.getItem(pi.getHeldItemSlot()), "brickthrower_item") != null) {
+					event.setCancelled(true);
+				}
+			}
+			if(!version.equals("1.8")) {
+				if(pi.getItemInOffHand() != null) {
+					if(Config.getNBTData(pi.getItemInOffHand(), "brickthrower_item") != null) {
+						event.setCancelled(true);
+					}
+				}
+			}
+		}
 		if(!(action == Action.RIGHT_CLICK_AIR) && !(action == Action.RIGHT_CLICK_BLOCK)) {
 			// Checks and sees what the event action is. If it isn't a right click on a block or air we do not want to do anything.
 			return;
@@ -103,6 +120,7 @@ public class PlayerClickEvent implements Listener {
 					event.getItem().setAmount(held.getAmount() - 1);
 				}
 			}
+			Date dropTime = new Date();
 			// After the time in seconds defined in the config remove the brick.
 			if(itemTime != 0) {
 				Bukkit.getScheduler().scheduleSyncDelayedTask(JavaPlugin.getPlugin(Main.class),  new Runnable() {
@@ -117,6 +135,13 @@ public class PlayerClickEvent implements Listener {
 				new BukkitRunnable() {
 					@Override
 					public void run() {
+						if(itemTime != 0) {
+							// This checks to make sure that this event is canceled when the item is removed after the time.
+							Date currentTime = new Date();
+							if((currentTime.getTime() - dropTime.getTime()) / 1000 >= itemTime) {
+								cancel();
+							}
+						}
 						// Get any entity that is nearby in this radius.
 						List<Entity> near = brock.getNearbyEntities(0.5, 1.0, 0.5);
 						for (Entity entity : near) {

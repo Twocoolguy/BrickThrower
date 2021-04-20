@@ -23,10 +23,10 @@ public class NBT14 {
 
 	public static String getNBTDataString(ItemStack item, String key) {
 		NamespacedKey objKey = new NamespacedKey(JavaPlugin.getPlugin(Main.class), key);
-		ItemMeta itemMeta = item.getItemMeta();
-		if(itemMeta == null) {
+		if(item.getItemMeta() == null) {
 			return null;
 		}
+		ItemMeta itemMeta = item.getItemMeta();
 		PersistentDataContainer container = (PersistentDataContainer) itemMeta.getPersistentDataContainer();
 		if(container.has(objKey, PersistentDataType.STRING)) {
 			return container.get(objKey, PersistentDataType.STRING);

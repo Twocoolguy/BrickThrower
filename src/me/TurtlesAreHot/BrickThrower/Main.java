@@ -3,12 +3,11 @@ package me.TurtlesAreHot.BrickThrower;
 import java.util.List;
 import java.util.ArrayList;
 
+import me.TurtlesAreHot.BrickThrower.events.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.TurtlesAreHot.BrickThrower.commands.BrickThrowerCommand;
-import me.TurtlesAreHot.BrickThrower.events.PlayerClickEvent;
-import me.TurtlesAreHot.BrickThrower.events.PrepareCraftEvent;
 
 public class Main extends JavaPlugin {
 	
@@ -35,13 +34,33 @@ public class Main extends JavaPlugin {
 		config.addDefault("default-item", default_item_mat); // this is the default item that /brickthrower get will give.
 		config.addDefault("item-disappear-time", 2); // time until the item on the ground disappears. Put 0 to disable and allow pickup of the item.
 		config.addDefault("item-damage", 0.0);
+		config.addDefault("allow-interacts", false);
+		config.addDefault("allow-guis", false);
 
 		config.options().copyDefaults(true);
 		this.saveConfig();
+		Config.reloadConfig();
 		this.getServer().getPluginManager().registerEvents(new PlayerClickEvent(),  this); // Adding event listener for any listener in the Main class.
 		this.getServer().getPluginManager().registerEvents(new PrepareCraftEvent(), this);
+		if(!Config.getAllowGuis()) {
+			this.getServer().getPluginManager().registerEvents(new EnchantEvent(), this);
+			this.getServer().getPluginManager().registerEvents(new FurnaceSmelt(), this);
+			if(!(Config.getServerVersion().equals("1.8"))) {
+				this.getServer().getPluginManager().registerEvents(new AnvilEvent(), this);
+				this.getServer().getPluginManager().registerEvents(new BrewingFuelEvent(), this);
+			}
+			this.getServer().getPluginManager().registerEvents(new BrewingEvent(), this);
+			if (Config.sixteenAndAbove()) {
+				this.getServer().getPluginManager().registerEvents(new SmithingEvent(), this);
+			}
+			if (Config.fourteenAndAbove()) {
+				this.getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+			}
+		}
+		if (!Config.getAllowInteracts()) {
+			this.getServer().getPluginManager().registerEvents(new InteractEntityEvent(), this);
+		}
 		getCommand("brickthrower").setExecutor(new BrickThrowerCommand());
-		Config.reloadConfig(); // Sets up our configreader object in our Config class.
 	}
 	
 	@Override

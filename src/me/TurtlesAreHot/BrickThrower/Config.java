@@ -61,6 +61,10 @@ public class Config {
 
 	public static double getItemDamage() { return config.getDouble("item-damage"); }
 
+	public static boolean getAllowInteracts() { return config.getBoolean("allow-interacts"); }
+
+	public static boolean getAllowGuis() { return config.getBoolean("allow-guis"); }
+
 	public static boolean oldServer() {
 		boolean result = false;
 		switch(version) {
@@ -107,6 +111,91 @@ public class Config {
 		return result;
 
 	}
+	public static boolean sixteenAndAbove() {
+		boolean result = true;
+		switch(version) {
+			case "1.15":
+				result = false;
+				break;
+			case "1.14":
+				result = false;
+				break;
+			case "1.13":
+				result = false;
+				break;
+			case "1.12":
+				result = false;
+				break;
+			case "1.11":
+				result = false;
+				break;
+			case "1.10":
+				result = false;
+				break;
+			case "1.9":
+				result = false;
+				break;
+			case "1.8":
+				result = false;
+				break;
+			default:
+				result = true;
+		}
+
+		return result;
+	}
+	public static boolean fourteenAndAbove() {
+		boolean result = true;
+		switch(version) {
+			case "1.13":
+				result = false;
+				break;
+			case "1.12":
+				result = false;
+				break;
+			case "1.11":
+				result = false;
+				break;
+			case "1.10":
+				result = false;
+				break;
+			case "1.9":
+				result = false;
+				break;
+			case "1.8":
+				result = false;
+				break;
+			default:
+				result = true;
+		}
+
+		return result;
+	}
+
+	public static boolean twelveAndBelow() {
+		boolean result = true;
+		switch(version) {
+			case "1.12":
+				result = true;
+				break;
+			case "1.11":
+				result = true;
+				break;
+			case "1.10":
+				result = true;
+				break;
+			case "1.9":
+				result = true;
+				break;
+			case "1.8":
+				result = true;
+				break;
+			default:
+				result = false;
+		}
+
+		return result;
+	}
 
 	public static String getNBTData(ItemStack item, String key) {
 		String data = null;
@@ -131,6 +220,33 @@ public class Config {
 				break;
 			default:
 				data = NBT14.getNBTDataString(item, key);
+		}
+		return data;
+	}
+
+	public static ItemStack setNBTData(ItemStack item, String key, String keyData) {
+		ItemStack data = null;
+		switch(version) {
+			case "1.13":
+				data = NBT13.setNBTData(item, key, keyData);
+				break;
+			case "1.12":
+				data = NBT12.setNBTData(item, key, keyData);
+				break;
+			case "1.11":
+				data = NBT11.setNBTData(item, key, keyData);
+				break;
+			case "1.10":
+				data = NBT10.setNBTData(item, key, keyData);
+				break;
+			case "1.9":
+				data = NBT9.setNBTData(item, key, keyData);
+				break;
+			case "1.8":
+				data = NBT8.setNBTData(item, key, keyData);
+				break;
+			default:
+				data = NBT14.setNBTData(item, key, keyData);
 		}
 		return data;
 	}
