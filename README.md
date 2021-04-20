@@ -20,6 +20,15 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Removed ability to use brickthrower items with a cartography table.
 - Removed ability to use a loom with brickthrower items.
 - Removed ability to use a trident obtained through brickthrower. 
+- Removed ability to enchant items obtained through brickthrower with an enchanting table.
+- Removed ability to smelt brickthrower items in a furnace. 
+- Removed the ability to use items from brickthrower in a brewing stand. 
+- Removed ability to use leads from brickthrower on mobs.
+- Removed ability to dye sheep with dye obtained from brickthrower.
+- Fixed a big bug where when the item disappeared it would still do damage to an entity if it got near it.
+- Removed ability to operate with tools obtained through brickthrower.
+- Added a check to see if your inventory was full when doing /brth get
+- Removed the ability to place lily pads with brickthrower (they still appear as ghost blocks sadly).
 
 # Need to do:
 Change it so instead of checking when an entity is hit, you check when the player clicks with a weapon/brickthrower item in their hand. This will allow throwing bricks to do damage.
@@ -33,16 +42,7 @@ O = Tested but does not work properly.
 
 ? = Unknown
 
-- Ability to enchant items (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to smelt items in a furnace. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 - Remove ability to fix stuff with anvil. (X - 1.8) (V - 1.9) (V - 1.10) (? - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use brewing stand with stuff. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use leads from brickthrower on mobs. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to dye sheep from brickthrower. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Add a check for if your inventory is full with brickthrower get. (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to place lily pads with brickthrower (They appear but are ghost blocks). (X - 1.8) (V - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 
 ## Things that have been "patched" but need to be tested
 - N/A.
