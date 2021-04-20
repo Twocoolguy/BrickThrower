@@ -8,7 +8,7 @@ I want to make clear about what I said in the 1.3.0 update about no more additio
 ## Contributing
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 ## Patches that are Finished and Tested (on all versions):
-- Remove ability to use smithing table with stuff. (V - 1.16)
+- Remove ability to use smithing table with stuff.
 - Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
 - This also means anything that you interact with by default will not be able to be interacted with if it is from brickthrower. This did remove a lot of bugs.
 - Added a new config option for performance, if you do not care about being able to use guis with items from brickthrower set allow-guis to true (crafting tables will still be disabled to use them with though.)
@@ -22,30 +22,14 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Removed ability to use a trident obtained through brickthrower. 
 - Removed ability to enchant items obtained through brickthrower with an enchanting table.
 - Removed ability to smelt brickthrower items in a furnace. 
-- Removed the ability to use items from brickthrower in a brewing stand. 
+- Removed the ability to use items from brickthrower in a brewing stand (except 1.8). 
 - Removed ability to use leads from brickthrower on mobs.
 - Removed ability to dye sheep with dye obtained from brickthrower.
 - Fixed a big bug where when the item disappeared it would still do damage to an entity if it got near it.
 - Removed ability to operate with tools obtained through brickthrower.
 - Added a check to see if your inventory was full when doing /brth get
 - Removed the ability to place lily pads with brickthrower (they still appear as ghost blocks sadly).
-
-# Need to do:
-Change it so instead of checking when an entity is hit, you check when the player clicks with a weapon/brickthrower item in their hand. This will allow throwing bricks to do damage.
-
-## All of these patches must be tested on each main version
-V = Tested and works properly
-
-X = Not tested.
-
-O = Tested but does not work properly.
-
-? = Unknown
-
-- Remove ability to fix stuff with anvil. (X - 1.8) (V - 1.9) (V - 1.10) (? - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-
-## Things that have been "patched" but need to be tested
-- N/A.
+- Removed the ability to fix brickthrower items with an anvil (except 1.8).
 
 ## May be fixed later but not in this patch
 - Remove ability to use horse armor from brickthrower. (1.8+)
