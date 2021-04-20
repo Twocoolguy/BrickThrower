@@ -31,16 +31,18 @@ X = Not tested.
 
 O = Tested but does not work properly.
 
-- Ability to enchant items (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to smelt items in a furnace. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to fix stuff with anvil. (X - 1.8) (X - 1.9) (X - 1.10) (X - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use brewing stand with stuff. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to use leads from brickthrower on mobs. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to dye sheep from brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Add a check for if your inventory is full with brickthrower get. (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
-- Remove ability to place lily pads with brickthrower (They appear but are ghost blocks). (X - 1.8) (X - 1.9) (X - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+? = Unknown
+
+- Ability to enchant items (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to smelt items in a furnace. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to fix stuff with anvil. (X - 1.8) (X - 1.9) (V - 1.10) (? - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to use brewing stand with stuff. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to use leads from brickthrower on mobs. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to dye sheep from brickthrower. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Fixed a big bug where when the item disappear it would still do damage to an entity if it got near it. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to operate with tools obtained through brickthrower. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Add a check for if your inventory is full with brickthrower get. (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
+- Remove ability to place lily pads with brickthrower (They appear but are ghost blocks). (X - 1.8) (X - 1.9) (V - 1.10) (V - 1.11) (V - 1.12) (V - 1.13) (V - 1.14) (V - 1.15) (V - 1.16)
 
 ## Things that have been "patched" but need to be tested
 - N/A.
