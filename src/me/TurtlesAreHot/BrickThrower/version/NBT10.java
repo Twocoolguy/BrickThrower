@@ -9,6 +9,9 @@ public class NBT10 {
     public static String getNBTDataString(ItemStack item, String key) {
         ItemStack nmsItem = item;
         net.minecraft.server.v1_10_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(nmsItem);
+        if(nmsStack == null) {
+            return null;
+        }
         NBTTagCompound itemCompound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
         String result = itemCompound.getString(key);
         if(result != null && !result.equals("true")) {
