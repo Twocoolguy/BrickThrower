@@ -7,7 +7,7 @@ I want to make clear about what I said in the 1.3.0 update about no more additio
 
 ## Contributing
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
-## Patches that are Finished and Tested (on all versions):
+## 1.3.1:
 - Remove ability to use smithing table with stuff.
 - Added a new config option for performance, if you do not care about being able to interact with items from brickthrower set allow-interacts to true.
 - This also means anything that you interact with by default will not be able to be interacted with if it is from brickthrower. This did remove a lot of bugs.
