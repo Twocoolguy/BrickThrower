@@ -74,7 +74,18 @@ public class PlayerClickEvent implements Listener {
 				held = pi.getItemInMainHand();
 			}
 		}
-		String info = Config.getNBTData(held, "brickthrower_item");
+		String info = null;
+		if(Config.isCommandRequired()) {
+			info = Config.getNBTData(held, "brickthrower_item");
+		}
+		else {
+			if(held.getType() == Material.BRICK) {
+				info = "true";
+			}
+			else if(Config.twelveAndBelow() && held.getType().getId() == 336) {
+				info = "true";
+			}
+		}
 		if(info == null) {
 			return;
 		}
