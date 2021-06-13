@@ -46,6 +46,8 @@ public class Config {
 	public static boolean isReloadEnabled() {
 		return config.getBoolean("reload-enabled");
 	}
+
+	public static boolean isCommandRequired() { return config.getBoolean("requires-command"); }
 	
 	public static String getItemName() {
 		return config.getString("item-name");
