@@ -16,6 +16,7 @@ public class Main extends JavaPlugin {
 		Config.reloadVersion();
 		this.saveDefaultConfig(); // Creates config.yml
 		FileConfiguration config = this.getConfig();
+		config.addDefault("requires-command", true);
 		config.addDefault("bricks-given", 10);
 		config.addDefault("reload-enabled", true);
 		config.addDefault("item-name", "Heavy Brick");
