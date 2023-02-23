@@ -1,12 +1,19 @@
-# BrickThrower v1.3.2 Source
+# BrickThrower v1.3.3 Source
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. For more advanced information please visit our wiki here: https://github.com/Twocoolguy/BrickThrower/wiki
 
 ## Notice
 I want to make clear about what I said in the 1.3.0 update about no more addition updates. When I say that there will not be anymore "content" what I mean by this is that I will not be coming up with more content myself. If a good idea is suggested it may be added, and depending on some patches there might be an addition for disabling it (like how there is in 1.3.1). I just wanted to make it clear that I was not really going to come up with additions unless they had to do with bugs. Thanks.
 
+## Notice 2
+Since it was requested by a server owner to add the "kb-velocity" and "item-velocity" mutliplier config options, this has been added. If you have any other requests for the plugin, let me know in our discord server!
+
 ## Contributing
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
+
+## 1.3.3:
+- Added two new config options: "item-veloicty-multipler" this allows you to change the multiplier of the velocity of the item when it is thrown. "kb-velocity-multiplier" which allows you to change the multiplier on the velocity of knockback a player takes when they are hit.
+- Added support for versions 1.18-1.19.3
 
 ## 1.3.2:
 - Added a new config option to allow you to throw bricks without obtaining them from the command. This config option is called "requires-command" and by default is set to true.
