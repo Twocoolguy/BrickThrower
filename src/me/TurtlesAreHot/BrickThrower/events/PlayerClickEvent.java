@@ -1,6 +1,7 @@
 package me.TurtlesAreHot.BrickThrower.events;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.TurtlesAreHot.BrickThrower.Config;
 import me.TurtlesAreHot.BrickThrower.Main;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.util.Date;
 import java.util.List;
@@ -110,7 +112,8 @@ public class PlayerClickEvent implements Listener {
 			brick.setItemMeta(brick_im);
 			// Gets the location of the brick and then sets its velocity and pickupdelay to make the item launch, and make it so you cannot pick it up.
 			Item brock = p.getWorld().dropItem(p.getEyeLocation(), brick);
-			brock.setVelocity(p.getEyeLocation().getDirection());
+			Vector thrown = p.getEyeLocation().getDirection();
+			brock.setVelocity(p.getEyeLocation().getDirection().multiply(Config.getItemVelocityMultiplier()));
 			int itemTime = Config.getDisappearTime();
 			if(itemTime != 0) {
 				brock.setPickupDelay(Short.MAX_VALUE);
@@ -164,10 +167,14 @@ public class PlayerClickEvent implements Listener {
 										// Checks if the player who threw the item is the one getting hit (prevents the player from hitting themself)
 										continue;
 									}
+									if(playerHit.getGameMode() == GameMode.CREATIVE) {
+										// Makes it not do anything to people in creative mode
+										continue;
+									}
 								}
 								lEntity.damage(itemDamage, p);
 								// Apply knockback
-								lEntity.setVelocity(brock.getVelocity());
+								lEntity.setVelocity(thrown.multiply(Config.getKbVelocityMultiplier()));
 								brock.remove();
 								cancel();
 							}

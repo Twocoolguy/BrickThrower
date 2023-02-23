@@ -21,6 +21,8 @@ import static org.bukkit.Material.getMaterial;
 
 
 public class BrickThrowerCommand implements CommandExecutor {
+
+
 	public boolean hasPermissionMessage(Player player, String permission) {
 		// This function checks if the player has permission and returns true if they do and false if they do not.
 		// If the player does not have permission, then it will print the permission node needed to use the command.

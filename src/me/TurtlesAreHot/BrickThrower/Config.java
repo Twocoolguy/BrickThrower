@@ -67,6 +67,10 @@ public class Config {
 
 	public static boolean getAllowGuis() { return config.getBoolean("allow-guis"); }
 
+	public static double getItemVelocityMultiplier() { return config.getDouble("item-velocity-multiplier"); }
+
+	public static double getKbVelocityMultiplier() { return config.getDouble("kb-velocity-multiplier"); }
+
 	public static boolean oldServer() {
 		boolean result = false;
 		switch(version) {
