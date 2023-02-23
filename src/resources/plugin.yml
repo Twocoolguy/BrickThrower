@@ -1,6 +1,6 @@
 main: me.TurtlesAreHot.BrickThrower.Main
 name: BrickThrower
-version: 1.3.2
+version: 1.3.3
 description: This plugin was created as a way to throw bricks!
 author: TurtlesAreHot
 api-version: 1.13
