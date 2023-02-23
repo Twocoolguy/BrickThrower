@@ -3,14 +3,18 @@
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. For more advanced information please visit our wiki here: https://github.com/Twocoolguy/BrickThrower/wiki
 
 ## Notice
-I want to make clear about what I said in the 1.3.0 update about no more addition updates. When I say that there will not be anymore "content" what I mean by this is that I will not be coming up with more content myself. If a good idea is suggested it may be added, and depending on some patches there might be an addition for disabling it (like how there is in 1.3.1). I just wanted to make it clear that I was not really going to come up with additions unless they had to do with bugs. Thanks.
+**I will not be adding new content myself (from my own ideas).**
+Most updates will be for:
+- Updating to allow support for new Minecraft versions
+- Fixing issues
+- Updating Documentation
 
-## Notice 2
-Since it was requested by a server owner to add the "kb-velocity" and "item-velocity" mutliplier config options, this has been added. If you have any other requests for the plugin, let me know in our discord server!
+If there is any requests for an update for new features I would not be against adding stuff if people want it. It is also possible that in the future I might want to recode this project due to the fact I have coded many other plugins other than this one (private plugins) and my abilities are much better, so the plugin may be refactored into a 2.0 update if I ever feel like doing so.
 
 ## Contributing
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 
+# Patch Notes
 ## 1.3.3:
 - Added two new config options: "item-veloicty-multipler" this allows you to change the multiplier of the velocity of the item when it is thrown. "kb-velocity-multiplier" which allows you to change the multiplier on the velocity of knockback a player takes when they are hit.
 - Added support for versions 1.18-1.19.3
@@ -42,36 +46,15 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Removed the ability to place lily pads with brickthrower (they still appear as ghost blocks sadly).
 - Removed the ability to fix brickthrower items with an anvil (except 1.8).
 
-## May be fixed later but not in this patch
-- Remove ability to use horse armor from brickthrower. (1.8+)
-- Remove ability to use arrows from brickthrower. (1.8+)
-- Remove ability to wear armor/elytras from brickthrower. (1.8+)
-- Remove ability to wear heads from brickthrower. (1.8+)
-- Remove ability to use shields from brickthrower. (1.9+)
 
-Most of these will also have some kind of toggle to them in the config. This is again due to performance.
-After these patches stuff must be retested. Also the native version changed to 1.16.5
+### 1.3.0:
+- Added damage to any living entity when bricks are thrown at them. Set damage to 0 in the config to toggle this off.
+- Allowed older versions to use items of their choice
+- Stoped allowing players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data. This allows them to be used with brickthrower.
+- Added the ability to allow console to reload config even if the option is set to false in the config.
+- Improved performance of the plugin.
+- Removed the checkconfig command because it was no longer useful.
 
-## Note
-1.3.0 is the final content update of BrickThrower. Things will not be added after this. Any updates are for: 
-- Support for newer versions of Minecraft
-- Bug patches
-- Documentation
-
-This is not due to me not having interest in the plugin, more that the plugin is complete. There is nothing else that I would have interest into adding to the plugin as anything more would push away from the point of the plugin. I also want to work on other plugins. This plugin has been a lot of fun to work on. :)
-
-## Finished Updates
-
-### 1.2.2:
-- Added ability to also get nether_bricks instead of normal bricks by typing: /brickthrower get nether 
-- Started using NBT tags to store no_craft data instead of lore.
-
-### 1.2.3:
-- Added the ability to change what the default item you get from /brickthrower get is (you can change this in the config).
-- Added the ability to have a list of items you can use (you can add and remove items in the config)
-- Added the ability to change the name of the item /brickthrower get gives you (you can change this in the config).
-- Added new alias for the brickthrower command, brth instead of brickthrower
-- Performance Improvements
 
 ### 1.2.4:
 - Refactored the code for performance improvements and readability.
@@ -84,11 +67,21 @@ This is not due to me not having interest in the plugin, more that the plugin is
   - 1.9
   - 1.8
 
+### 1.2.3:
+- Added the ability to change what the default item you get from /brickthrower get is (you can change this in the config).
+- Added the ability to have a list of items you can use (you can add and remove items in the config)
+- Added the ability to change the name of the item /brickthrower get gives you (you can change this in the config).
+- Added new alias for the brickthrower command, brth instead of brickthrower
+- Performance Improvements
 
-### 1.3.0:
-- Added damage to any living entity when bricks are thrown at them. Set damage to 0 in the config to toggle this off.
-- Allowed older versions to use items of their choice
-- Stoped allowing players to eat food that has our NBT data and do not allow players to place the blocks/items that has our NBT data. This allows them to be used with brickthrower.
-- Added the ability to allow console to reload config even if the option is set to false in the config.
-- Improved performance of the plugin.
-- Removed the checkconfig command because it was no longer useful.
+### 1.2.2:
+- Added ability to also get nether_bricks instead of normal bricks by typing: /brickthrower get nether 
+- Started using NBT tags to store no_craft data instead of lore.
+
+## Issues that need to be fixed eventually
+- Remove ability to use horse armor from brickthrower. (1.8+)
+- Remove ability to use arrows from brickthrower. (1.8+)
+- Remove ability to wear armor/elytras from brickthrower. (1.8+)
+- Remove ability to wear heads from brickthrower. (1.8+)
+- Remove ability to use shields from brickthrower. (1.9+)
+*who knows if I will ever get to these lol*
