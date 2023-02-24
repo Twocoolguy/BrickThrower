@@ -201,7 +201,7 @@ public class Main extends JavaPlugin {
     }
 
     /**
-     * This is for logging info to console
+     * This is for logging info to console (DEBUGGING ONLY)
      * @param info info to log
      * @param p Player passed so we can get the server to send the message to
      */
