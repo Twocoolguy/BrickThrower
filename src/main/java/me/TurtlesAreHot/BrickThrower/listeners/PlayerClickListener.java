@@ -2,6 +2,7 @@ package me.TurtlesAreHot.BrickThrower.listeners;
 
 import me.TurtlesAreHot.BrickThrower.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
@@ -63,8 +64,11 @@ public class PlayerClickListener implements Listener {
             thrown.setPickupDelay(Short.MAX_VALUE);
         }
 
-        // Remove one from player inventory.
-        e.getItem().setAmount(itemHeld.getAmount() - 1);
+        // Remove one from player inventory if they are not in creative mode
+        if(player.getGameMode() != GameMode.CREATIVE) {
+            e.getItem().setAmount(itemHeld.getAmount() - 1);
+        }
+
 
         Date dropTime = new Date();
 
@@ -110,6 +114,11 @@ public class PlayerClickListener implements Listener {
                         if(hit.getUniqueId().equals(player.getUniqueId())) {
                             continue;
                         }
+                        if(hit.getGameMode() == GameMode.CREATIVE) {
+                            // Remove the hit, but don't apply damage or velocity.
+                            thrown.remove();
+                            cancel();
+                        }
                      }
 
                     // Apply Damage and Knockback
@@ -120,8 +129,6 @@ public class PlayerClickListener implements Listener {
                 }
             }
         }.runTaskTimer(JavaPlugin.getPlugin(Main.class), 0, 0);
-
-
 
     }
 

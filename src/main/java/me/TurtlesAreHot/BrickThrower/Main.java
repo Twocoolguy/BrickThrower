@@ -1,12 +1,14 @@
 package me.TurtlesAreHot.BrickThrower;
 
 import me.TurtlesAreHot.BrickThrower.commands.BrickThrower;
-import me.TurtlesAreHot.BrickThrower.listeners.PlayerClickListener;
+import me.TurtlesAreHot.BrickThrower.listeners.*;
 import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -16,19 +18,48 @@ public class Main extends JavaPlugin {
 
     private static FileConfiguration config;
     private static String version;
+    private static int versionNum;
 
     @Override
     public void onEnable() {
         reloadVersion();
         setDefaultConfigs();
-
-        this.getServer().getPluginManager().registerEvents(new PlayerClickListener(), this);
+        registerListeners();
 
         getCommand("brickthrower").setExecutor(new BrickThrower());
     }
 
     @Override
     public void onDisable() {
+
+    }
+
+    private void registerListeners() {
+        PluginManager manager = this.getServer().getPluginManager();
+        manager.registerEvents(new PlayerClickListener(), this);
+        manager.registerEvents(new PrepareCraftListener(), this);
+        if(!(config.getBoolean("allow-guis"))) {
+            // This is when guis should not be able to use BrickThrower items.
+            manager.registerEvents(new EnchantListener(), this);
+            manager.registerEvents(new FurnaceSmeltListener(), this);
+            manager.registerEvents(new UtilContentsListener(), this);
+            if(!(version.equals("1.8"))) {
+                // Fueling for Brewing doesn't exist in 1.8
+                manager.registerEvents(new BrewFuelListener(), this);
+            }
+            if(versionNum >= 16) {
+                // Smithing table was added in 1.16!
+                manager.registerEvents(new SmithingListener(), this);
+            }
+            if(versionNum >= 14) {
+                // stonecutters, cartography tables, loom tables were added in 1.14!
+                manager.registerEvents(new InventoryClickListener(), this);
+            }
+        }
+        if(config.getBoolean("allow-interacts")) {
+            manager.registerEvents(new InteractEntityListener(), this);
+        }
+
 
     }
 
@@ -47,6 +78,15 @@ public class Main extends JavaPlugin {
             //This is in case the version is like "1.12" or "1.8" etc
             version = ver_fix;
         }
+
+        // Setting the version num so we can use it later.
+        String endOfVersion = version.substring(version.indexOf('.') + 1);
+        versionNum = 0;
+        try {
+            versionNum = Integer.parseInt(endOfVersion);
+        } catch(NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     // Gets config file
@@ -58,6 +98,9 @@ public class Main extends JavaPlugin {
     public static String getServerVersion() {
         return version;
     }
+
+    // Gets server version number (number after "1.")
+    public static int getVersionNum() { return versionNum; }
 
     public void setDefaultConfigs() {
         this.saveDefaultConfig(); // Creates config.yml if it doesn't exist.
@@ -96,15 +139,7 @@ public class Main extends JavaPlugin {
     }
 
     public static boolean oldMaterials() {
-        String endOfVersion = version.substring(version.indexOf('.') + 1);
-        int verNum = 0;
-        try {
-            verNum = Integer.parseInt(endOfVersion);
-        } catch(NumberFormatException e) {
-            e.printStackTrace();
-        }
-
-        if(verNum <= 12) {
+        if(versionNum <= 12) {
             return true;
         }
 
