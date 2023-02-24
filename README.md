@@ -3,6 +3,9 @@
 - Need to test to make sure there are no bugs with any config option,
 - Also need to test more to make sure throwing the items work well, I removed a lot of code from there that I had no idea what it did.
 
+# **Overall code quality should be much more readable now. There were many if statement in if statements that didn't cause issue but looked horrible.**
+- Also there is less code technically now. There was a lot of useless code in places especially in the InventoryClickListener/Event. Should look much better now.
+
 # BrickThrower v1.3.3 Source
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. For more advanced information please visit our wiki here: https://github.com/Twocoolguy/BrickThrower/wiki
