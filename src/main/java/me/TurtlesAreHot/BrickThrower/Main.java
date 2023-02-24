@@ -1,9 +1,11 @@
 package me.TurtlesAreHot.BrickThrower;
 
 import me.TurtlesAreHot.BrickThrower.commands.BrickThrower;
+import me.TurtlesAreHot.BrickThrower.listeners.PlayerClickListener;
 import me.TurtlesAreHot.BrickThrower.version.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,6 +21,8 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         reloadVersion();
         setDefaultConfigs();
+
+        this.getServer().getPluginManager().registerEvents(new PlayerClickListener(), this);
 
         getCommand("brickthrower").setExecutor(new BrickThrower());
     }
@@ -51,7 +55,7 @@ public class Main extends JavaPlugin {
     }
 
     // Gets Server version
-    public String getServerVersion() {
+    public static String getServerVersion() {
         return version;
     }
 
@@ -85,6 +89,9 @@ public class Main extends JavaPlugin {
         config.addDefault("item-velocity-multiplier", 1.0D);
         config.addDefault("kb-velocity-multiplier", 1.0D);
 
+        config.options().copyDefaults(true);
+        this.saveConfig();
+        reloadCon();
 
     }
 
@@ -158,5 +165,13 @@ public class Main extends JavaPlugin {
         return data;
     }
 
+    /**
+     * This is for logging info to console
+     * @param info info to log
+     * @param p Player passed so we can get the server to send the message to
+     */
+    public static void logInfo(String info, Player p) {
+        p.getServer().getLogger().info(info);
+    }
 
 }
