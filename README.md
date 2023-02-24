@@ -1,5 +1,7 @@
-# To add
-- Add a allow offhand config option
+# Bug test time!
+- Need to test on all versions the plugin can be used on.
+- Need to test to make sure there are no bugs with any config option,
+- Also need to test more to make sure throwing the items work well, I removed a lot of code from there that I had no idea what it did.
 
 # BrickThrower v1.3.3 Source
 
