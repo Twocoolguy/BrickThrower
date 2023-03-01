@@ -2,7 +2,6 @@
 - manager.registerEvents(new PrepareCraftListener(), this); move into "allow-guis" if stmnt.
 - Make FurnaceSmeltListener have less if statements inside of if statements. 
 - InteractEntityListener add return after event is canceled so next if stmnt doesn't run
-- 
 # Bug test time!
 - Need to test on all versions the plugin can be used on.
 - Need to test to make sure there are no bugs with any config option,
