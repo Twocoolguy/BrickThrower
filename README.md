@@ -1,3 +1,5 @@
+## Some bugs that I found while reviewing code that need fixed
+- manager.registerEvents(new PrepareCraftListener(), this); move into "allow-guis" if stmnt.
 # Bug test time!
 - Need to test on all versions the plugin can be used on.
 - Need to test to make sure there are no bugs with any config option,
