@@ -22,10 +22,11 @@ public class InteractEntityListener implements Listener {
 
         }
 
-        if(pi.getItem(pi.getHeldItemSlot()) != null) {
-            if(Main.getNBTData(pi.getItem(pi.getHeldItemSlot()), "brickthrower_item") != null) {
-                e.setCancelled(true);
-            }
+        if(pi.getItem(pi.getHeldItemSlot()) == null) {
+            return;
+        }
+        if(Main.getNBTData(pi.getItem(pi.getHeldItemSlot()), "brickthrower_item") != null) {
+            e.setCancelled(true);
         }
     }
 }
