@@ -102,7 +102,7 @@ public class PlayerClickListener implements Listener {
                 List<Entity> entityList = thrown.getNearbyEntities(0.5, 1.0,  0.5);
                 for(Entity entity : entityList) {
                     if(!(entity instanceof LivingEntity)) {
-                        // Don't want to hit any non living entities.
+                        // Don't want to hit any non-living entities.
                         continue;
                     }
                     LivingEntity livingEntity = (LivingEntity) entity;
@@ -114,9 +114,13 @@ public class PlayerClickListener implements Listener {
                         if(hit.getUniqueId().equals(player.getUniqueId())) {
                             continue;
                         }
-                        if(hit.getGameMode() == GameMode.CREATIVE) {
+                        // In creative or blocking with a shield? We should cancel
+                        if(hit.getGameMode() == GameMode.CREATIVE ||
+                        hit.isBlocking() ) {
+
                             // Remove the hit, but don't apply damage or velocity.
                             thrown.remove();
+                            throwVector.multiply(0);
                             cancel();
                         }
                      }
