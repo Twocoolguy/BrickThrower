@@ -13,26 +13,28 @@ public class FurnaceSmeltListener implements Listener {
     @EventHandler
     public void onBurn(FurnaceBurnEvent e) {
         Material blockType = e.getBlock().getType();
-        if(blockType == Material.FURNACE ||
-                (Main.getVersionNum() >= 14 && blockType == Material.BLAST_FURNACE) ||
-                (Main.getVersionNum() >= 14 && blockType == Material.SMOKER)) {
-            Furnace furnace = (Furnace) e.getBlock().getState();
-            ItemStack[] furnaceContents = furnace.getInventory().getContents();
-            for(ItemStack itemStack : furnaceContents) {
-                if(itemStack == null) {
-                    continue;
-                }
-
-                if (Main.getNBTData(itemStack, "brickthrower_item") != null) {
-                     e.setCancelled(true);
-                }
-
+        if(blockType != Material.FURNACE &&
+                (Main.getVersionNum() >= 14 && blockType != Material.BLAST_FURNACE) &&
+                (Main.getVersionNum() >= 14 && blockType != Material.SMOKER)) {
+            return;
+        }
+        Furnace furnace = (Furnace) e.getBlock().getState();
+        ItemStack[] furnaceContents = furnace.getInventory().getContents();
+        for(ItemStack itemStack : furnaceContents) {
+            if(itemStack == null) {
+                continue;
             }
 
-            // Checking fuel
-            if(Main.getNBTData(furnace.getInventory().getFuel(), "brickthrower_item") != null) {
+            if (Main.getNBTData(itemStack, "brickthrower_item") != null) {
                 e.setCancelled(true);
             }
+
+        }
+
+        // Checking fuel
+        if(Main.getNBTData(furnace.getInventory().getFuel(), "brickthrower_item") != null) {
+            e.setCancelled(true);
         }
     }
 }
+
