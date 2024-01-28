@@ -56,7 +56,7 @@ public class Main extends JavaPlugin {
                 manager.registerEvents(new InventoryClickListener(), this);
             }
         }
-        if(config.getBoolean("allow-interacts")) {
+        if(!(config.getBoolean("allow-interacts"))) {
             manager.registerEvents(new InteractEntityListener(), this);
         }
 
