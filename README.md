@@ -12,7 +12,7 @@
 # **Overall code quality should be much more readable now. There were many if statement in if statements that didn't cause issue but looked horrible.**
 - Also there is less code technically now. There was a lot of useless code in places especially in the InventoryClickListener/Event. Should look much better now.
 
-# BrickThrower v1.3.3 Source
+# BrickThrower v2.0.0 Source
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. For more advanced information please visit our wiki here: https://github.com/Twocoolguy/BrickThrower/wiki
 
@@ -29,6 +29,15 @@ If there is any requests for an update for new features I would not be against a
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 
 # Patch Notes
+## 2.0.0
+- Entire codebase was refactored as it was not very easy to read in some places. Useless code was also removed.
+- People in creative mode no longer lose bricks from their inventory
+- When people are in creative mode they no longer take knockback from bricks.
+- When shielding you no longer take knockback from bricks.
+- Updated native version to 1.20.4
+- Performance should be improved as a lot of useless code was removed
+- many random bug fixes
+- Keep in mind this update may break some things as much of the code was changed, if you find any issues try to report them on the github!
 ## 1.3.3:
 - Added two new config options: "item-veloicty-multipler" this allows you to change the multiplier of the velocity of the item when it is thrown. "kb-velocity-multiplier" which allows you to change the multiplier on the velocity of knockback a player takes when they are hit.
 - Added support for versions 1.18-1.19.3
