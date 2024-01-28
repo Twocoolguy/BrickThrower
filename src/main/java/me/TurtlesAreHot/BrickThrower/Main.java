@@ -37,9 +37,9 @@ public class Main extends JavaPlugin {
     private void registerListeners() {
         PluginManager manager = this.getServer().getPluginManager();
         manager.registerEvents(new PlayerClickListener(), this);
-        manager.registerEvents(new PrepareCraftListener(), this);
         if(!(config.getBoolean("allow-guis"))) {
             // This is when guis should not be able to use BrickThrower items.
+            manager.registerEvents(new PrepareCraftListener(), this);
             manager.registerEvents(new EnchantListener(), this);
             manager.registerEvents(new FurnaceSmeltListener(), this);
             manager.registerEvents(new UtilContentsListener(), this);
