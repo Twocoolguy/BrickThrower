@@ -1,4 +1,4 @@
-# BrickThrower v1.3.3 Source
+# BrickThrower v2.0.0 Source
 
 BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks with right click. For more advanced information please visit our wiki here: https://github.com/Twocoolguy/BrickThrower/wiki
 
@@ -6,15 +6,25 @@ BrickThrower is a simple plugin for Minecraft Servers where you can throw bricks
 **I will not be adding new content myself (from my own ideas).**
 Most updates will be for:
 - Updating to allow support for new Minecraft versions
-- Fixing issues
+- Fixing bugs/issues
 - Updating Documentation
 
-If there is any requests for an update for new features I would not be against adding stuff if people want it. It is also possible that in the future I might want to recode this project due to the fact I have coded many other plugins other than this one (private plugins) and my abilities are much better, so the plugin may be refactored into a 2.0 update if I ever feel like doing so.
+If there is any requests for an update for new features I would not be against adding stuff if people want it.
 
 ## Contributing
 There is now a new branch called "wip". This branch will be for any kind of update (bug patches, supporting new versions of minecraft, and documentation). Any change I make to the code will go to that branch. Any pull requests made that are accepted will also go to this branch. Once there is enough changes (which is under my discretion as to what constitutes as "enough") the wip branch will be merged into the main branch and I will release an update onto spigot (after testing of course). For any big changes to the plugin please make a suggestion on our discord server here: https://discord.gg/TyZM6ePB65
 
 # Patch Notes
+## 2.0.0
+- Entire codebase was refactored as it was not very easy to read in some places and I felt many things needed to be moved around. Useless code was also removed.
+- People in creative mode no longer lose bricks from their inventory
+- When people are in creative mode they no longer take knockback from bricks.
+- When shielding you no longer take knockback from bricks.
+- Updated native version to 1.20.4 (supporting 1.8 - 1.20.4)
+- Performance should be improved as a lot of useless code was removed
+- Many random bug fixes
+- Keep in mind this update may break some things as much of the code was changed (though a lot was tested), if you find any issues try to report them on the github!
+
 ## 1.3.3:
 - Added two new config options: "item-veloicty-multipler" this allows you to change the multiplier of the velocity of the item when it is thrown. "kb-velocity-multiplier" which allows you to change the multiplier on the velocity of knockback a player takes when they are hit.
 - Added support for versions 1.18-1.19.3
@@ -78,10 +88,9 @@ There is now a new branch called "wip". This branch will be for any kind of upda
 - Added ability to also get nether_bricks instead of normal bricks by typing: /brickthrower get nether 
 - Started using NBT tags to store no_craft data instead of lore.
 
-## Issues that need to be fixed eventually
+## Issues that are known and need to be fixed eventually
 - Remove ability to use horse armor from brickthrower. (1.8+)
 - Remove ability to use arrows from brickthrower. (1.8+)
 - Remove ability to wear armor/elytras from brickthrower. (1.8+)
 - Remove ability to wear heads from brickthrower. (1.8+)
-- Remove ability to use shields from brickthrower. (1.9+)
 *who knows if I will ever get to these lol*
